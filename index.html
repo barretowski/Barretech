@@ -99,13 +99,17 @@
     .nav-links a:hover { color: var(--accent); }
     .nav-cta {
       background: var(--azul);
-      color: var(--branco) !important;
+      color: var(--branco);
       padding: .5rem 1.3rem;
       border-radius: 6px;
       font-weight: 500;
-      transition: background var(--trans) !important;
+      font-size: .92rem;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: background var(--trans);
+      white-space: nowrap;
     }
-    .nav-cta:hover { background: var(--azul2) !important; color: var(--branco) !important; }
+    .nav-cta:hover { background: var(--azul2); color: var(--branco); }
 
     /* ── HERO ───────────────────────────────────────── */
     #hero {
@@ -560,9 +564,43 @@
     /* ── MOBILE ─────────────────────────────────────── */
     @media (max-width: 900px) {
       .hero-visual { display: none; }
-      .servicos-grid { grid-template-columns: 1fr; }
-      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
       .nav-links { display: none; }
+
+      #hero { padding: 7rem 5% 4rem; }
+
+      .servicos-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sobre-stats { grid-template-columns: 1fr 1fr; }
+
+      .section-inner { padding: 4rem 5%; }
+      .contato-inner { padding: 4rem 5%; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 5%; }
+      .nav-cta { font-size: .82rem; padding: .45rem 1rem; }
+
+      #hero { padding: 6rem 5% 3rem; min-height: auto; }
+      h1 { font-size: clamp(2rem, 10vw, 3rem); }
+      .hero-sub { font-size: .97rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: .85rem 1.2rem; }
+
+      .servicos-grid { grid-template-columns: 1fr; }
+      .servico-card { padding: 1.5rem 1.2rem; }
+
+      .sobre-stats { grid-template-columns: 1fr 1fr; gap: .7rem; }
+      .stat-box .num { font-size: 1.7rem; }
+
+      .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .section-inner { padding: 3rem 5%; }
+      .contato-inner { padding: 3rem 5%; }
+
+      .wpp-btn { font-size: .97rem; padding: .85rem 1.6rem; width: 100%; justify-content: center; }
+      .contato-info { flex-direction: column; align-items: center; gap: 1rem; }
+
+      footer { flex-direction: column; text-align: center; padding: 1.5rem 5%; }
     }
   </style>
 </head>
@@ -577,8 +615,8 @@
   <ul class="nav-links">
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#contato" class="nav-cta">Falar no WhatsApp</a></li>
   </ul>
+  <a href="#contato" class="nav-cta">Falar no WhatsApp</a>
 </nav>
 
 <!-- HERO -->
