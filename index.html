@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Barretech Solutions — Tecnologia para o seu negócio</title>
+  <meta name="description" content="Desenvolvemos sistemas sob medida para pequenas e médias empresas — e-commerce, painéis gerenciais, automações e landing pages com suporte direto e sem burocracia." />
+  <meta property="og:title" content="Barretech Solutions — Tecnologia para o seu negócio" />
+  <meta property="og:description" content="Sistemas sob medida para o seu negócio: e-commerce, ERP, automações e sites profissionais. Suporte direto com o desenvolvedor." />
+  <meta property="og:image" content="/logo.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.barretechsolutions.com.br" />
+  <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -320,7 +327,7 @@
 
     .servicos-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     .servico-card {
@@ -384,6 +391,61 @@
       border-radius: 20px;
       padding: .2rem .7rem;
       color: var(--cinza);
+    }
+
+    /* ── COMO FUNCIONA ──────────────────────────────── */
+    #como-funciona { background: var(--navy); }
+    #como-funciona::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    .etapas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .etapas-grid::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(12.5% + 1.5rem);
+      right: calc(12.5% + 1.5rem);
+      height: 2px;
+      background: linear-gradient(90deg, var(--azul), var(--accent));
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .etapa-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .etapa-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--navy2);
+      border: 2px solid rgba(0,176,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin: 0 auto 1.2rem;
+    }
+    .etapa-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .etapa-card p {
+      font-size: .88rem;
+      color: var(--cinza);
+      line-height: 1.6;
     }
 
     /* ── SOBRE ──────────────────────────────────────── */
@@ -570,6 +632,9 @@
 
       .servicos-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
 
+      .etapas-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .etapas-grid::before { display: none; }
+
       .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .sobre-stats { grid-template-columns: 1fr 1fr; }
 
@@ -589,6 +654,8 @@
 
       .servicos-grid { grid-template-columns: 1fr; }
       .servico-card { padding: 1.5rem 1.2rem; }
+
+      .etapas-grid { grid-template-columns: 1fr; gap: 2rem; }
 
       .sobre-stats { grid-template-columns: 1fr 1fr; gap: .7rem; }
       .stat-box .num { font-size: 1.7rem; }
@@ -614,6 +681,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#sobre">Sobre</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Falar no WhatsApp</a>
@@ -624,7 +692,7 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span></span>
-      Barretech Solutions
+      100% sob medida para o seu negócio
     </div>
     <h1>Tecnologia que<br/><em>impulsiona</em><br/>seu negócio</h1>
     <p class="hero-sub">
@@ -720,6 +788,38 @@
   </div>
 </section>
 
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <p class="section-label reveal">Processo</p>
+    <h2 class="section-title reveal">Como funciona</h2>
+    <p class="section-sub reveal">Do primeiro contato à entrega do sistema, você acompanha tudo de perto. Sem surpresas, sem burocracia.</p>
+
+    <div class="etapas-grid">
+      <div class="etapa-card reveal">
+        <div class="etapa-num">1</div>
+        <h3>Conversa inicial</h3>
+        <p>Você conta sobre o negócio e o que precisa. Entendemos o problema antes de propor qualquer solução.</p>
+      </div>
+      <div class="etapa-card reveal">
+        <div class="etapa-num">2</div>
+        <h3>Proposta personalizada</h3>
+        <p>Elaboramos um escopo detalhado com funcionalidades, prazo e investimento — sem surpresas depois.</p>
+      </div>
+      <div class="etapa-card reveal">
+        <div class="etapa-num">3</div>
+        <h3>Desenvolvimento</h3>
+        <p>Você acompanha o progresso em tempo real. Mostramos cada etapa e ajustamos conforme o feedback.</p>
+      </div>
+      <div class="etapa-card reveal">
+        <div class="etapa-num">4</div>
+        <h3>Entrega e suporte</h3>
+        <p>Treinamento da equipe, sistema em produção e suporte contínuo. A parceria não termina na entrega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SOBRE -->
 <section id="sobre">
   <div class="section-inner">
@@ -742,7 +842,7 @@
             <div class="lbl">Personalizado para o seu negócio</div>
           </div>
           <div class="stat-box">
-            <div class="num">R/bin/sh</div>
+            <div class="num">R$0</div>
             <div class="lbl">Custo de atualizações e melhorias</div>
           </div>
         </div>
