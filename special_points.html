@@ -470,20 +470,112 @@
     /* ── Mobile ── */
     @media (max-width: 768px) {
       .wrapper { grid-template-columns: 1fr; }
-      aside { position: static; height: auto; }
-      .hero { padding: 2rem 1.5rem; }
-      .hero h1 { font-size: 1.75rem; }
-      .conteudo { padding: 1.5rem; }
-      h2 { font-size: 1.2rem; }
+
+      /* Sidebar: oculta por padrão, desliza sobre o conteúdo */
+      aside {
+        position: fixed;
+        top: 0; left: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+      }
+      aside.aberto { transform: translateX(0); }
+
+      /* Overlay escuro atrás da sidebar */
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 100;
+      }
+      .overlay.visivel { display: block; }
+
+      /* Barra superior mobile */
+      .mobile-topbar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: #1e1b4b;
+        padding: 0.85rem 1.25rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .btn-menu {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 4px;
+        flex-shrink: 0;
+      }
+      .btn-menu span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+      .mobile-topbar-titulo {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.02em;
+      }
+
+      .hero { padding: 2rem 1.25rem; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 0.95rem; }
+      .conteudo { padding: 1.25rem; }
+      h2 { font-size: 1.1rem; }
+      h3 { font-size: 0.97rem; }
+
+      /* Tabelas com scroll horizontal */
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* Tabs quebram linha */
+      .tabs-area { flex-wrap: wrap; width: 100%; }
+
+      /* Cards menores */
+      .cards-papel { grid-template-columns: 1fr 1fr; }
+      .grid-badges { grid-template-columns: 1fr 1fr; }
+      .seguranca-grid { grid-template-columns: 1fr; }
+
+      /* Nav links com área de toque maior */
+      nav a { padding: 0.65rem 1.5rem; font-size: 0.88rem; }
+    }
+
+    /* Topbar só aparece no mobile */
+    .mobile-topbar { display: none; }
+    @media (max-width: 768px) {
+      .mobile-topbar { display: flex; }
     }
   </style>
 </head>
 <body>
 
+<!-- Barra superior mobile -->
+<div class="mobile-topbar">
+  <button class="btn-menu" id="btnMenu" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <span class="mobile-topbar-titulo">⭐ SpecialPoints</span>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
 <div class="wrapper">
 
   <!-- ── Sidebar ── -->
-  <aside>
+  <aside id="sidebar">
     <div class="sidebar-logo">
       <span class="produto">⭐ SpecialPoints</span>
       <span class="subtitulo">Manual do Usuário</span>
@@ -891,5 +983,29 @@
   </main>
 </div>
 
+<script>
+  const btnMenu = document.getElementById('btnMenu');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function abrirMenu() {
+    sidebar.classList.add('aberto');
+    overlay.classList.add('visivel');
+    document.body.style.overflow = 'hidden';
+  }
+  function fecharMenu() {
+    sidebar.classList.remove('aberto');
+    overlay.classList.remove('visivel');
+    document.body.style.overflow = '';
+  }
+
+  btnMenu.addEventListener('click', abrirMenu);
+  overlay.addEventListener('click', fecharMenu);
+
+  // Fecha ao clicar em um link do menu
+  sidebar.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', fecharMenu);
+  });
+</script>
 </body>
 </html>
