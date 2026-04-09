@@ -1,1254 +1,894 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manual do Usuário — Empório Modelo</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpecialPoints — Manual do Usuário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --ouro:   #d2a028;
-    --escuro: #1a1200;
-    --fundo:  #faf9f6;
-    --borda:  #ede8df;
-    --texto:  #2c2820;
-    --sub:    #6a6058;
-    --verde:  #3a7d44;
-    --vermelho: #b83232;
-    --azul:   #1a5276;
-  }
+    :root {
+      --roxo:        #7c3aed;
+      --roxo-claro:  #ede9fe;
+      --rosa:        #ec4899;
+      --verde:       #10b981;
+      --verde-claro: #d1fae5;
+      --azul:        #3b82f6;
+      --azul-claro:  #dbeafe;
+      --amarelo:     #f59e0b;
+      --amarelo-claro: #fef3c7;
+      --cinza:       #64748b;
+      --cinza-claro: #f1f5f9;
+      --borda:       #e2e8f0;
+      --texto:       #1e293b;
+      --texto-suave: #64748b;
+      --branco:      #ffffff;
+      --grad:        linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--fundo);
-    color: var(--texto);
-    font-size: 10.5pt;
-    line-height: 1.65;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texto);
+      background: #f8fafc;
+      font-size: 15px;
+      line-height: 1.65;
+    }
 
-  /* ── CAPA ─────────────────────────────────────────────── */
-  .capa {
-    background: var(--escuro);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    page-break-after: always;
-  }
-  .capa-ornamento {
-    width: 80px; height: 3px;
-    background: var(--ouro);
-    margin: 1.5rem auto;
-    border-radius: 2px;
-  }
-  .capa h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem;
-    font-weight: 300;
-    color: #fff;
-    letter-spacing: .08em;
-    line-height: 1.2;
-  }
-  .capa h1 span { color: var(--ouro); }
-  .capa .subtitulo {
-    font-size: 1rem;
-    color: rgba(255,255,255,.55);
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    margin-top: .5rem;
-  }
-  .capa .versao {
-    font-size: .78rem;
-    color: rgba(255,255,255,.3);
-    letter-spacing: .12em;
-    margin-top: 3rem;
-    text-transform: uppercase;
-  }
-  .capa .emblema {
-    width: 72px; height: 72px;
-    border: 2px solid rgba(210,160,40,.4);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--ouro);
-    letter-spacing: .05em;
-  }
+    /* ── Layout ── */
+    .wrapper {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
 
-  /* ── SUMÁRIO ──────────────────────────────────────────── */
-  .sumario {
-    padding: 4rem 5rem;
-    page-break-after: always;
-    max-width: 700px;
-    margin: auto;
-  }
-  .sumario h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 400;
-    color: var(--escuro);
-    margin-bottom: 2rem;
-    padding-bottom: .6rem;
-    border-bottom: 1px solid var(--borda);
-  }
-  .sumario ol { padding-left: 0; list-style: none; }
-  .sumario li {
-    display: flex;
-    align-items: baseline;
-    gap: .5rem;
-    padding: .45rem 0;
-    border-bottom: 1px dotted #ddd6cc;
-    font-size: .95rem;
-  }
-  .sumario li .num {
-    min-width: 22px;
-    color: var(--ouro);
-    font-weight: 600;
-    font-size: .82rem;
-  }
-  .sumario li .titulo { flex: 1; color: var(--texto); }
-  .sumario li .pag {
-    color: var(--sub);
-    font-size: .8rem;
-  }
-  .sumario .grupo {
-    margin-top: 1.2rem;
-    margin-bottom: .3rem;
-    font-size: .7rem;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    color: var(--sub);
-  }
+    /* ── Sidebar ── */
+    aside {
+      background: #1e1b4b;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 2rem;
+    }
 
-  /* ── PÁGINAS INTERNAS ─────────────────────────────────── */
-  .pagina {
-    padding: 3.5rem 5rem;
-    max-width: 750px;
-    margin: auto;
-    page-break-before: always;
-  }
-  .pagina:first-child { page-break-before: auto; }
+    .sidebar-logo {
+      background: var(--grad);
+      padding: 1.75rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .sidebar-logo .produto { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; }
+    .sidebar-logo .subtitulo { font-size: 0.72rem; color: rgba(255,255,255,0.65); font-weight: 500; }
 
-  /* cabeçalho de seção */
-  .sec-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.8rem;
-    padding-bottom: .8rem;
-    border-bottom: 2px solid var(--escuro);
-  }
-  .sec-header .icone {
-    width: 40px; height: 40px;
-    background: var(--escuro);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .sec-header .icone svg { fill: var(--ouro); }
-  .sec-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: var(--escuro);
-    line-height: 1.1;
-  }
-  .sec-header .tag {
-    font-size: .68rem;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--sub);
-    display: block;
-    margin-top: .15rem;
-  }
+    nav { padding: 1rem 0; flex: 1; }
 
-  /* conteúdo */
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--escuro);
-    margin: 1.6rem 0 .6rem;
-  }
-  p { margin-bottom: .8rem; color: var(--texto); }
+    .nav-grupo { margin-bottom: 0.25rem; }
 
-  /* steps numerados */
-  .steps { margin: 1rem 0 1.4rem; }
-  .step {
-    display: flex;
-    gap: .9rem;
-    align-items: flex-start;
-    margin-bottom: .8rem;
-  }
-  .step .n {
-    min-width: 26px; height: 26px;
-    background: var(--escuro);
-    color: var(--ouro);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: .75rem;
-    font-weight: 600;
-    flex-shrink: 0;
-    margin-top: .05rem;
-  }
-  .step .txt { flex: 1; font-size: .93rem; line-height: 1.55; }
-  .step .txt strong { color: var(--escuro); }
+    .nav-grupo-titulo {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      padding: 0.75rem 1.5rem 0.35rem;
+    }
 
-  /* callouts */
-  .dica, .alerta, .info {
-    border-radius: 6px;
-    padding: .75rem 1rem;
-    margin: 1rem 0;
-    font-size: .88rem;
-    display: flex;
-    gap: .7rem;
-    align-items: flex-start;
-  }
-  .dica  { background: #f0f9e8; border-left: 3px solid #4e7231; color: #2d5a1b; }
-  .alerta{ background: #fff0ee; border-left: 3px solid var(--vermelho); color: #7a2020; }
-  .info  { background: #eef4fb; border-left: 3px solid var(--azul); color: #1a3a5c; }
-  .dica .emoji, .alerta .emoji, .info .emoji { font-size: 1rem; margin-top: .05rem; flex-shrink: 0; }
+    nav a {
+      display: block;
+      padding: 0.45rem 1.5rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+    }
+    nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+      border-left-color: rgba(255,255,255,0.3);
+    }
 
-  /* tabela de campos */
-  .campos {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0 1.4rem;
-    font-size: .88rem;
-  }
-  .campos thead tr { background: var(--escuro); color: #fff; }
-  .campos thead th {
-    padding: .5rem .8rem;
-    text-align: left;
-    font-weight: 500;
-    font-size: .78rem;
-    letter-spacing: .05em;
-  }
-  .campos tbody tr:nth-child(even) { background: #f5f2ee; }
-  .campos tbody td { padding: .45rem .8rem; vertical-align: top; border-bottom: 1px solid var(--borda); }
-  .campos tbody td:first-child { font-weight: 500; color: var(--escuro); white-space: nowrap; }
-  .obrig { color: var(--vermelho); font-size: .7rem; margin-left: .2rem; font-weight: 700; }
-  .opcion { color: var(--sub); font-size: .7rem; margin-left: .2rem; }
+    .sidebar-versao {
+      padding: 1rem 1.5rem 0;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+    }
 
-  /* badge de status */
-  .badge {
-    display: inline-block;
-    padding: .2rem .6rem;
-    border-radius: 20px;
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .04em;
-  }
-  .badge-verde   { background: #e8f5e9; color: #2e7d32; }
-  .badge-amarelo { background: #fff8e1; color: #f57f17; }
-  .badge-vermelho{ background: #ffebee; color: #c62828; }
-  .badge-azul    { background: #e3f2fd; color: #1565c0; }
-  .badge-cinza   { background: #f5f5f5; color: #616161; }
+    /* ── Conteúdo principal ── */
+    main {
+      min-width: 0;
+      padding: 0;
+    }
 
-  /* separador visual */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--borda);
-    margin: 1.5rem 0;
-  }
+    /* ── Hero ── */
+    .hero {
+      background: var(--grad);
+      color: #fff;
+      padding: 3.5rem 3rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: 80px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
 
-  /* grid de cards */
-  .card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-    margin: 1rem 0 1.4rem;
-  }
-  .card {
-    border: 1px solid var(--borda);
-    border-radius: 8px;
-    padding: .9rem 1rem;
-    background: #fff;
-  }
-  .card .card-titulo {
-    font-weight: 600;
-    font-size: .83rem;
-    color: var(--escuro);
-    margin-bottom: .3rem;
-  }
-  .card .card-desc {
-    font-size: .8rem;
-    color: var(--sub);
-    line-height: 1.45;
-  }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 540px;
+    }
 
-  /* lista simples */
-  ul.lista, ol.lista {
-    padding-left: 1.2rem;
-    margin: .5rem 0 1rem;
-  }
-  ul.lista li, ol.lista li {
-    margin-bottom: .35rem;
-    font-size: .93rem;
-    line-height: 1.5;
-  }
+    /* ── Seções ── */
+    .conteudo { padding: 2.5rem 3rem; max-width: 900px; }
 
-  /* rodapé de página */
-  .rodape {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--borda);
-    font-size: .72rem;
-    color: #b0a090;
-    text-align: center;
-    letter-spacing: .06em;
-  }
+    section { margin-bottom: 3rem; }
 
-  /* print */
-  @media print {
-    @page { size: A4; margin: 15mm 18mm; }
-    body { font-size: 10pt; background: #fff; }
-    .pagina { padding: 0; max-width: 100%; }
-    .capa { min-height: auto; padding: 60mm 20mm; }
-    .sumario { padding: 2rem; max-width: 100%; }
-  }
-</style>
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--texto);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--borda);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    h2 .icone-secao {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--roxo-claro);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--roxo);
+      margin: 1.1rem 0 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    p { margin-bottom: 0.75rem; color: var(--texto); }
+
+    ul, ol {
+      padding-left: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+    li { margin-bottom: 0.3rem; }
+
+    strong { font-weight: 700; }
+
+    blockquote {
+      background: var(--amarelo-claro);
+      border-left: 4px solid var(--amarelo);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 0.75rem 0;
+      font-size: 0.88rem;
+    }
+    blockquote strong { color: #92400e; }
+
+    /* ── Cartões de papel / perfil ── */
+    .cards-papel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .card-papel {
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card-papel:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+    .card-papel .papel-icone { font-size: 1.75rem; }
+    .card-papel .papel-nome { font-weight: 800; font-size: 0.95rem; }
+    .card-papel .papel-quem { font-size: 0.75rem; color: var(--roxo); font-weight: 600; }
+    .card-papel .papel-desc { font-size: 0.78rem; color: var(--texto-suave); line-height: 1.4; margin: 0; }
+
+    /* ── Fluxo ── */
+    .fluxo {
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 1rem 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .fluxo-passo {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      position: relative;
+    }
+    .fluxo-passo:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 36px;
+      width: 2px;
+      height: calc(100% - 12px);
+      background: var(--borda);
+    }
+
+    .fluxo-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--grad);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fluxo-texto strong { display: block; font-size: 0.9rem; }
+    .fluxo-texto span { font-size: 0.8rem; color: var(--texto-suave); }
+
+    /* ── Tabelas ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0 1.25rem;
+      font-size: 0.88rem;
+      background: var(--branco);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    thead th {
+      background: var(--cinza-claro);
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cinza);
+    }
+    tbody td { padding: 0.7rem 1rem; border-top: 1px solid var(--borda); }
+    tbody tr:hover { background: #f8fafc; }
+
+    /* ── Chips de status ── */
+    .chip {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .chip-roxo  { background: var(--roxo-claro); color: var(--roxo); }
+    .chip-verde { background: var(--verde-claro); color: #065f46; }
+    .chip-azul  { background: var(--azul-claro); color: #1e40af; }
+    .chip-amarelo { background: var(--amarelo-claro); color: #92400e; }
+
+    /* ── Badges de conquistas ── */
+    .grid-badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.85rem;
+      margin: 1rem 0;
+    }
+    .badge-item {
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      padding: 1rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.35rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .badge-item .bi { font-size: 1.75rem; }
+    .badge-item strong { font-size: 0.82rem; }
+    .badge-item span { font-size: 0.72rem; color: var(--texto-suave); line-height: 1.35; }
+
+    /* ── Notificações ── */
+    .notif-lista { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.75rem 0; }
+    .notif-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--branco); border: 1.5px solid var(--borda);
+      border-radius: 10px; padding: 0.65rem 1rem;
+      font-size: 0.85rem;
+    }
+    .notif-icone { font-size: 1.1rem; }
+    .notif-evento { flex: 1; font-weight: 600; }
+    .notif-quem { font-size: 0.75rem; color: var(--texto-suave); }
+
+    /* ── Segurança ── */
+    .seguranca-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.85rem;
+      margin: 0.75rem 0;
+    }
+    .seg-item {
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .seg-icone { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .seg-texto strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+    .seg-texto span { font-size: 0.75rem; color: var(--texto-suave); }
+
+    /* ── FAQ ── */
+    .faq { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
+    .faq-item {
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .faq-pergunta {
+      padding: 1rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-pergunta::marker { display: none; }
+    .faq-pergunta .faq-q {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--roxo-claro); color: var(--roxo);
+      font-size: 0.7rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    details[open] .faq-pergunta { border-bottom: 1px solid var(--borda); }
+    .faq-resposta { padding: 0.9rem 1.25rem; font-size: 0.88rem; color: var(--texto-suave); line-height: 1.6; }
+
+    /* ── Passos numerados ── */
+    .passos { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.75rem 0; }
+    .passo {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: var(--branco); border: 1.5px solid var(--borda);
+      border-radius: 10px; padding: 0.8rem 1rem;
+    }
+    .passo-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--grad); color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .passo-texto { font-size: 0.88rem; padding-top: 0.1rem; }
+
+    /* ── Tabs de área ── */
+    .tabs-area {
+      display: flex; gap: 0.5rem;
+      background: var(--cinza-claro);
+      border-radius: 10px; padding: 0.3rem;
+      margin: 0.75rem 0 1.25rem;
+      width: fit-content;
+    }
+    .tab {
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--texto-suave);
+    }
+    .tab.ativa { background: var(--branco); color: var(--roxo); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+    /* ── Rodapé ── */
+    footer {
+      margin-top: 2rem;
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--borda);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+      background: var(--branco);
+    }
+
+    /* ── Print ── */
+    @media print {
+      aside { display: none; }
+      .wrapper { grid-template-columns: 1fr; }
+      .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .conteudo { padding: 1.5rem 2rem; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .wrapper { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 1.75rem; }
+      .conteudo { padding: 1.5rem; }
+      h2 { font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════════
-     CAPA
-════════════════════════════════════════════════════════ -->
-<div class="capa">
-  <div class="emblema">EM</div>
-  <h1>Empório <span>Modelo</span></h1>
-  <div class="capa-ornamento"></div>
-  <p class="subtitulo">Manual do Administrador</p>
-  <p class="versao">Versão 2.1 &nbsp;·&nbsp; 2026</p>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     SUMÁRIO
-════════════════════════════════════════════════════════ -->
-<div class="sumario">
-  <h2>Sumário</h2>
-  <ol>
-    <p class="grupo">Introdução</p>
-    <li><span class="num">1</span><span class="titulo">Visão geral do sistema</span><span class="pag">pg. 3</span></li>
-    <li><span class="num">2</span><span class="titulo">Acesso e login</span><span class="pag">pg. 4</span></li>
-
-    <p class="grupo">Catálogo</p>
-    <li><span class="num">3</span><span class="titulo">Categorias de produtos</span><span class="pag">pg. 5</span></li>
-    <li><span class="num">4</span><span class="titulo">Cadastrar produto</span><span class="pag">pg. 6</span></li>
-    <li><span class="num">5</span><span class="titulo">Editar e desativar produto</span><span class="pag">pg. 8</span></li>
-
-    <p class="grupo">Loja</p>
-    <li><span class="num">6</span><span class="titulo">Banners promocionais</span><span class="pag">pg. 9</span></li>
-    <li><span class="num">7</span><span class="titulo">Pedidos</span><span class="pag">pg. 10</span></li>
-
-    <p class="grupo">Administração</p>
-    <li><span class="num">8</span><span class="titulo">Gerenciar usuários</span><span class="pag">pg. 12</span></li>
-    <li><span class="num">9</span><span class="titulo">Relatórios de vendas</span><span class="pag">pg. 13</span></li>
-    <li><span class="num">10</span><span class="titulo">Dashboard gerencial</span><span class="pag">pg. 14</span></li>
-    <li><span class="num">11</span><span class="titulo">Módulo financeiro</span><span class="pag">pg. 15</span></li>
-
-    <p class="grupo">Referência</p>
-    <li><span class="num">12</span><span class="titulo">Status dos pedidos</span><span class="pag">pg. 18</span></li>
-  </ol>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     1. VISÃO GERAL
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="#d2a028" stroke-width="1.8"/></svg>
-    </div>
-    <div>
-      <h2>Visão geral do sistema</h2>
-      <span class="tag">Capítulo 1 — Introdução</span>
-    </div>
-  </div>
-
-  <p>
-    O <strong>Empório Modelo</strong> é uma plataforma completa de comércio eletrônico desenvolvida especialmente para o seu negócio. Ela permite que você administre produtos, categorias, banners, pedidos e usuários, tudo em um único painel.
-  </p>
-
-  <h3>O que o sistema oferece</h3>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-titulo">Catálogo de Produtos</div>
-      <div class="card-desc">Cadastre, edite e organize todos os seus produtos com fotos, preços e estoque.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Pedidos</div>
-      <div class="card-desc">Receba e acompanhe pedidos dos clientes, atualizando o status em tempo real.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Banners</div>
-      <div class="card-desc">Gerencie imagens promocionais exibidas na página inicial da loja.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Relatórios</div>
-      <div class="card-desc">Veja resumos de vendas por período, produto, e cliente com gráficos simples.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Categorias</div>
-      <div class="card-desc">Crie e organize categorias (e subcategorias) para facilitar a navegação.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Usuários</div>
-      <div class="card-desc">Gerencie contas de clientes e administradores, ativando ou bloqueando acessos.</div>
-    </div>
-  </div>
-
-  <h3>Perfis de acesso</h3>
-  <p>O sistema possui dois perfis distintos:</p>
-  <table class="campos">
-    <thead><tr><th>Perfil</th><th>Quem é</th><th>O que pode fazer</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><span class="badge badge-vermelho">Administrador</span></td>
-        <td>Você e sua equipe de confiança</td>
-        <td>Tudo: gerenciar produtos, pedidos, usuários, relatórios</td>
-      </tr>
-      <tr>
-        <td><span class="badge badge-azul">Cliente</span></td>
-        <td>Seus clientes</td>
-        <td>Navegar no catálogo, fazer pedidos e gerenciar o próprio cadastro</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="info">
-    <span class="emoji">ℹ</span>
-    <span>Este manual foi escrito para administradores. As seções a seguir descrevem todas as funcionalidades do painel administrativo.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 1</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     2. ACESSO E LOGIN
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    </div>
-    <div>
-      <h2>Acesso e login</h2>
-      <span class="tag">Capítulo 2 — Autenticação</span>
-    </div>
-  </div>
-
-  <h3>Como entrar no sistema</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">Acesse o endereço do site no navegador (Chrome, Edge ou Firefox são recomendados).</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Clique em <strong>Entrar</strong> ou acesse diretamente a página de login.</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Digite seu <strong>e-mail</strong> ou <strong>nome de usuário</strong> e sua <strong>senha</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">4</div>
-      <div class="txt">Clique em <strong>Entrar</strong>. Você será redirecionado ao catálogo com o menu de administrador visível.</div>
-    </div>
-  </div>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Você saberá que está logado como administrador quando ver o menu superior com os itens: <strong>+ Produto, + Categoria, Banners, Usuários, Pedidos e Relatórios</strong>.</span>
-  </div>
-
-  <h3>Navegando pelo painel</h3>
-  <p>Após o login, a barra superior sempre estará visível. Clique em qualquer item do menu para navegar:</p>
-  <table class="campos">
-    <thead><tr><th>Menu</th><th>O que abre</th></tr></thead>
-    <tbody>
-      <tr><td>Catálogo</td><td>Página principal da loja (visão do cliente)</td></tr>
-      <tr><td>+ Produto</td><td>Formulário para cadastrar novo produto</td></tr>
-      <tr><td>+ Categoria</td><td>Gerenciamento de categorias</td></tr>
-      <tr><td>Banners</td><td>Gerenciamento de banners promocionais</td></tr>
-      <tr><td>Usuários</td><td>Lista e gestão de contas de clientes/admins</td></tr>
-      <tr><td>Pedidos</td><td>Lista de pedidos recebidos</td></tr>
-      <tr><td>Relatórios</td><td>Painel de relatórios de vendas</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Como sair do sistema</h3>
-  <p>Clique no seu nome (canto superior direito) e selecione <strong>Sair</strong>. Isso encerra sua sessão com segurança.</p>
-
-  <div class="alerta">
-    <span class="emoji">⚠</span>
-    <span>Nunca compartilhe sua senha. Se suspeitar que ela foi comprometida, entre em contato com o desenvolvedor para redefini-la.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 2</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     3. CATEGORIAS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-    </div>
-    <div>
-      <h2>Categorias de produtos</h2>
-      <span class="tag">Capítulo 3 — Catálogo</span>
-    </div>
-  </div>
-
-  <p>
-    As categorias organizam os produtos da loja e aparecem como filtros para os clientes na página do catálogo. Antes de cadastrar produtos, configure as categorias.
-  </p>
-
-  <h3>Criar uma nova categoria</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">No menu superior, clique em <strong>+ Categoria</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Digite a <strong>descrição</strong> da categoria (ex: "Frios e Laticínios").</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Se for uma subcategoria, selecione a <strong>categoria pai</strong> no campo indicado. Caso seja uma categoria principal, deixe em branco.</div>
-    </div>
-    <div class="step">
-      <div class="n">4</div>
-      <div class="txt">Clique em <strong>Salvar Categoria</strong>. Ela aparecerá na lista abaixo.</div>
-    </div>
-  </div>
-
-  <h3>Exemplo de hierarquia</h3>
-  <div class="info">
-    <span class="emoji">ℹ</span>
-    <div>
-      <strong>Bebidas</strong> (categoria principal)<br>
-      &nbsp;&nbsp;&nbsp;↳ Refrigerantes (subcategoria)<br>
-      &nbsp;&nbsp;&nbsp;↳ Sucos (subcategoria)<br>
-      <strong>Mercearia</strong> (categoria principal)<br>
-      &nbsp;&nbsp;&nbsp;↳ Massas (subcategoria)
-    </div>
-  </div>
-
-  <h3>Editar ou excluir uma categoria</h3>
-  <p>Na lista de categorias, cada linha possui dois botões:</p>
-  <ul class="lista">
-    <li><strong>Editar (ícone de lápis):</strong> clique para preencher o formulário com os dados da categoria e altere o que desejar.</li>
-    <li><strong>Excluir (ícone de lixeira):</strong> remove a categoria. Uma janela de confirmação aparecerá antes de excluir.</li>
-  </ul>
-
-  <div class="alerta">
-    <span class="emoji">⚠</span>
-    <span>Não exclua uma categoria que já possui produtos vinculados, pois os produtos ficarão sem categoria. Verifique antes de deletar.</span>
-  </div>
-
-  <h3>Ativar e desativar categorias</h3>
-  <p>
-    Cada categoria tem um botão de alternância (ativo/inativo). Ao desativar uma categoria, ela deixa de aparecer como filtro no catálogo, mas os produtos vinculados a ela continuam cadastrados.
-  </p>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 3</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     4. CADASTRAR PRODUTO
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-    </div>
-    <div>
-      <h2>Cadastrar produto</h2>
-      <span class="tag">Capítulo 4 — Catálogo</span>
-    </div>
-  </div>
-
-  <p>Acesse <strong>+ Produto</strong> no menu para abrir o formulário de cadastro.</p>
-
-  <h3>Campos do formulário</h3>
-  <table class="campos">
-    <thead><tr><th>Campo</th><th>Descrição</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Nome <span class="obrig">*</span></td>
-        <td>Nome do produto exibido no catálogo. Ex: "Queijo Minas Padrão"</td>
-      </tr>
-      <tr>
-        <td>Código</td>
-        <td>Gerado automaticamente pelo sistema. Não é necessário preencher.</td>
-      </tr>
-      <tr>
-        <td>Descrição <span class="opcion">(opcional)</span></td>
-        <td>Texto descritivo do produto. Aparece na página de detalhes.</td>
-      </tr>
-      <tr>
-        <td>Valor (R$) <span class="obrig">*</span></td>
-        <td>Preço de venda. Use ponto ou vírgula para centavos. Ex: 12.90</td>
-      </tr>
-      <tr>
-        <td>Quantidade <span class="obrig">*</span></td>
-        <td>Estoque disponível. Use 0 se o produto estiver em falta.</td>
-      </tr>
-      <tr>
-        <td>Unidade <span class="obrig">*</span></td>
-        <td>Como o produto é vendido: Unitário (un), Kg, Grama (g), Litro, Caixa, etc.</td>
-      </tr>
-      <tr>
-        <td>Categoria <span class="obrig">*</span></td>
-        <td>Selecione a categoria do produto no menu suspenso.</td>
-      </tr>
-      <tr>
-        <td>Código de Barras <span class="opcion">(opcional)</span></td>
-        <td>EAN/código de barras. Se informado, o sistema avisa caso já esteja em uso.</td>
-      </tr>
-      <tr>
-        <td>Imagem <span class="opcion">(opcional)</span></td>
-        <td>Foto do produto. Formatos aceitos: JPG, PNG, WEBP. Tamanho máximo: 5 MB.</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="font-size:.78rem;color:var(--sub);margin-top:-.5rem;margin-bottom:1rem"><span class="obrig">*</span> Campo obrigatório &nbsp;&nbsp; <span class="opcion">(opcional)</span> Pode ser deixado em branco</p>
-
-  <h3>Como fazer upload de imagem</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">Clique na área pontilhada <strong>"Clique para fazer upload"</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Selecione a imagem no seu computador ou celular.</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Uma pré-visualização aparecerá no lugar da área de upload. Para trocar, clique sobre a imagem.</div>
-    </div>
-  </div>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Use imagens com fundo claro ou branco para um visual mais elegante no catálogo. Dimensão ideal: <strong>800 × 800 pixels</strong> ou maior.</span>
-  </div>
-
-  <h3>Finalizar o cadastro</h3>
-  <p>Após preencher os campos obrigatórios, clique em <strong>Cadastrar Produto</strong>. Uma mensagem verde de confirmação aparecerá e o formulário será limpo para o próximo cadastro.</p>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 4</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     5. EDITAR PRODUTO
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-    </div>
-    <div>
-      <h2>Editar e desativar produto</h2>
-      <span class="tag">Capítulo 5 — Catálogo</span>
-    </div>
-  </div>
-
-  <h3>Como acessar a edição</h3>
-  <p>
-    No catálogo, cada produto exibido para o administrador possui um botão <strong>Editar</strong> (ícone de lápis). Clique nele para abrir a página de edição daquele produto.
-  </p>
-
-  <h3>O que pode ser alterado</h3>
-  <p>Todos os campos do produto podem ser alterados: nome, descrição, valor, quantidade, unidade, categoria, código de barras e imagem.</p>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Para atualizar o preço de um produto, basta alterar o campo <strong>Valor</strong> e clicar em <strong>Salvar alterações</strong>.</span>
-  </div>
-
-  <h3>Ativar e desativar um produto</h3>
-  <p>
-    Na página de edição há um botão de alternância <strong>Produto ativo / Produto inativo</strong>. Ao desativar, o produto sai do catálogo público mas continua salvo no sistema. Use isso para produtos temporariamente fora de estoque ou em pausa.
-  </p>
-
-  <table class="campos">
-    <thead><tr><th>Status</th><th>Visível no catálogo?</th><th>Quando usar</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><span class="badge badge-verde">Ativo</span></td>
-        <td>Sim</td>
-        <td>Produto disponível para compra</td>
-      </tr>
-      <tr>
-        <td><span class="badge badge-cinza">Inativo</span></td>
-        <td>Não</td>
-        <td>Produto temporariamente indisponível ou fora de linha</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Excluir um produto</h3>
-  <p>
-    Na página de edição, clique no botão <strong>Excluir produto</strong> (em vermelho, na parte inferior). Uma janela de confirmação será exibida antes da exclusão definitiva.
-  </p>
-
-  <div class="alerta">
-    <span class="emoji">⚠</span>
-    <span>A exclusão é permanente e não pode ser desfeita. Prefira <strong>desativar</strong> o produto em vez de excluir, para manter o histórico de pedidos intacto.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 5</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     6. BANNERS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><rect x="3" y="3" width="18" height="14" rx="2"/><line x1="3" y1="20" x2="21" y2="20"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-    </div>
-    <div>
-      <h2>Banners promocionais</h2>
-      <span class="tag">Capítulo 6 — Loja</span>
-    </div>
-  </div>
-
-  <p>
-    Os banners são imagens exibidas em destaque na parte superior do catálogo. Use-os para divulgar promoções, lançamentos ou datas especiais.
-  </p>
-
-  <h3>Criar um novo banner</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">No menu superior, clique em <strong>Banners</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Clique em <strong>Novo Banner</strong> para abrir o formulário.</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Faça o upload da imagem clicando na área indicada.</div>
-    </div>
-    <div class="step">
-      <div class="n">4</div>
-      <div class="txt">Preencha os campos opcionais: título, subtítulo, cor de fundo e link (URL para onde o banner direciona ao ser clicado).</div>
-    </div>
-    <div class="step">
-      <div class="n">5</div>
-      <div class="txt">Defina a <strong>Ordem</strong> (número inteiro) para controlar a posição do banner no carrossel. Números menores aparecem primeiro.</div>
-    </div>
-    <div class="step">
-      <div class="n">6</div>
-      <div class="txt">Clique em <strong>Salvar</strong>.</div>
-    </div>
-  </div>
-
-  <h3>Campos do banner</h3>
-  <table class="campos">
-    <thead><tr><th>Campo</th><th>Descrição</th></tr></thead>
-    <tbody>
-      <tr><td>Imagem <span class="obrig">*</span></td><td>Foto ou arte do banner. Recomendado: 1200 × 400 px, formato horizontal.</td></tr>
-      <tr><td>Título</td><td>Texto principal sobreposto à imagem.</td></tr>
-      <tr><td>Subtítulo</td><td>Texto secundário abaixo do título.</td></tr>
-      <tr><td>Cor de fundo</td><td>Cor exibida caso a imagem não ocupe toda a área.</td></tr>
-      <tr><td>Link</td><td>URL para onde o cliente é direcionado ao clicar no banner.</td></tr>
-      <tr><td>Ordem</td><td>Posição no carrossel. Ex: 1 = primeiro, 2 = segundo.</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Ativar, editar e excluir banners</h3>
-  <ul class="lista">
-    <li><strong>Ativar/Desativar:</strong> use o botão de alternância em cada banner. Apenas banners ativos aparecem no site.</li>
-    <li><strong>Editar:</strong> clique no ícone de lápis para modificar qualquer campo.</li>
-    <li><strong>Excluir:</strong> clique no ícone de lixeira. Uma confirmação será solicitada.</li>
-    <li><strong>Desativar todos:</strong> o botão "Desativar todos" remove todos os banners do ar de uma só vez — útil após o término de uma promoção.</li>
-  </ul>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 6</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     7. PEDIDOS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    </div>
-    <div>
-      <h2>Pedidos</h2>
-      <span class="tag">Capítulo 7 — Loja</span>
-    </div>
-  </div>
-
-  <p>
-    Quando um cliente finaliza uma compra pelo site, o pedido é enviado via WhatsApp e registrado no sistema. Acesse <strong>Pedidos</strong> no menu para visualizar e gerenciar todos eles.
-  </p>
-
-  <h3>Visualizando os pedidos</h3>
-  <p>A página exibe os pedidos em cards. Cada card contém:</p>
-  <ul class="lista">
-    <li>Número do pedido e data/hora de criação</li>
-    <li>Nome e telefone do cliente</li>
-    <li>Tipo de entrega: <strong>Entrega em domicílio</strong> ou <strong>Retirada</strong></li>
-    <li>Endereço de entrega (quando aplicável)</li>
-    <li>Lista de produtos com quantidade e subtotal</li>
-    <li>Forma de pagamento e troco (se necessário)</li>
-    <li>Observações do cliente</li>
-    <li>Valor total do pedido</li>
-  </ul>
-
-  <h3>Filtrar pedidos por status</h3>
-  <p>Use os botões no topo da página para filtrar por status:</p>
-  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 1.2rem">
-    <span class="badge badge-amarelo">Pendente</span>
-    <span class="badge badge-azul">Confirmado</span>
-    <span class="badge" style="background:#fff3e0;color:#e65100">Em preparo</span>
-    <span class="badge badge-verde">Entregue</span>
-    <span class="badge badge-vermelho">Cancelado</span>
-  </div>
-
-  <h3>Atualizar o status de um pedido</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">Localize o pedido desejado na lista.</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Clique no menu suspenso de status no canto do card.</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Selecione o novo status. A atualização é salva automaticamente.</div>
-    </div>
-  </div>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Mantenha o status dos pedidos sempre atualizado. Isso ajuda a organizar sua operação e dá visibilidade ao fluxo de trabalho da sua equipe.</span>
-  </div>
-
-  <h3>Notificações automáticas de novos pedidos</h3>
-  <p>
-    A página de Pedidos verifica automaticamente se chegaram novos pedidos a cada <strong>30 segundos</strong>, sem precisar recarregar a página. Quando um pedido novo é detectado:
-  </p>
-  <ul class="lista">
-    <li>Um <strong>som de alerta</strong> é tocado pelo navegador.</li>
-    <li>O <strong>título da aba</strong> exibe o número de novos pedidos — ex: <code style="background:#f0ede8;padding:.1rem .4rem;border-radius:4px;font-size:.85em">(2) Pedidos — Empório Modelo</code></li>
-    <li>Uma <strong>notificação nativa</strong> do sistema operacional é enviada (quando autorizada).</li>
-  </ul>
-
-  <div class="info">
-    <span class="emoji">ℹ</span>
-    <div>
-      <strong>Ativar notificações do sistema:</strong> na primeira visita à página de Pedidos, clique no botão
-      <strong>"🔔 Ativar notificações"</strong> que aparece no topo. O navegador pedirá permissão — clique em <em>Permitir</em>.
-      Após conceder, você receberá alertas mesmo se estiver em outra aba ou janela.
-    </div>
-  </div>
-
-  <h3>Fluxo recomendado de status</h3>
-  <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:.7rem 0 1.2rem;font-size:.85rem">
-    <span class="badge badge-amarelo">Pendente</span>
-    <span style="color:var(--sub)">→</span>
-    <span class="badge badge-azul">Confirmado</span>
-    <span style="color:var(--sub)">→</span>
-    <span class="badge" style="background:#fff3e0;color:#e65100">Em preparo</span>
-    <span style="color:var(--sub)">→</span>
-    <span class="badge badge-verde">Entregue</span>
-  </div>
-  <p style="font-size:.88rem;color:var(--sub)">Use <span class="badge badge-vermelho">Cancelado</span> apenas quando necessário (pedido recusado ou desistência do cliente).</p>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 7</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     8. USUÁRIOS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    </div>
-    <div>
-      <h2>Gerenciar usuários</h2>
-      <span class="tag">Capítulo 8 — Administração</span>
-    </div>
-  </div>
-
-  <p>
-    Acesse <strong>Usuários</strong> no menu para visualizar e gerenciar todas as contas cadastradas no sistema.
-  </p>
-
-  <h3>Buscar e filtrar usuários</h3>
-  <ul class="lista">
-    <li><strong>Campo de busca:</strong> procure por nome, nome de usuário ou e-mail.</li>
-    <li><strong>Filtro por tipo:</strong> filtre entre Clientes e Administradores.</li>
-    <li><strong>Filtro por status:</strong> filtre entre contas Ativas e Inativas.</li>
-  </ul>
-
-  <h3>Ações disponíveis por usuário</h3>
-  <table class="campos">
-    <thead><tr><th>Ação</th><th>Como fazer</th><th>Efeito</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Ativar / Bloquear</td>
-        <td>Botão de alternância ao lado do usuário</td>
-        <td>Usuário bloqueado não consegue fazer login</td>
-      </tr>
-      <tr>
-        <td>Tornar Administrador</td>
-        <td>Botão "Tornar Adm" na linha do usuário</td>
-        <td>Eleva o cliente a administrador, dando acesso ao painel</td>
-      </tr>
-      <tr>
-        <td>Rebaixar para Cliente</td>
-        <td>Botão "Tornar Cliente" na linha do usuário</td>
-        <td>Remove privilégios de administrador</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="alerta">
-    <span class="emoji">⚠</span>
-    <span>Conceda o perfil de <strong>Administrador</strong> somente a pessoas de sua total confiança, pois elas terão acesso completo ao sistema, incluindo produtos, pedidos e relatórios financeiros.</span>
-  </div>
-
-  <h3>Estatísticas de usuários</h3>
-  <p>
-    No topo da página é exibido um resumo rápido com o total de usuários ativos e inativos, facilitando o acompanhamento da base de clientes cadastrados.
-  </p>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 8</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     9. RELATÓRIOS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6"  y1="20" x2="6"  y2="14"/></svg>
-    </div>
-    <div>
-      <h2>Relatórios de vendas</h2>
-      <span class="tag">Capítulo 9 — Administração</span>
-    </div>
-  </div>
-
-  <p>
-    O painel de relatórios oferece uma visão completa das vendas do seu negócio. Acesse pelo menu <strong>Relatórios</strong>.
-  </p>
-
-  <h3>Definindo o período de análise</h3>
-  <p>
-    No topo da página, selecione a <strong>data inicial</strong> e a <strong>data final</strong> do período que deseja analisar, depois clique em <strong>Buscar</strong>. Por padrão, o sistema carrega automaticamente os dados dos <strong>últimos 30 dias</strong>.
-  </p>
-  <p>Use os atalhos rápidos para mudar o período rapidamente: <strong>Hoje</strong>, <strong>Esta semana</strong>, <strong>Este mês</strong>, <strong>Últimos 30 dias</strong>, <strong>Últimos 3 meses</strong> e <strong>Este ano</strong>.</p>
-
-  <h3>Abas disponíveis</h3>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-titulo">Resumo</div>
-      <div class="card-desc">Visão geral: total de pedidos, receita total, ticket médio e distribuição por status e tipo de entrega.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Por Produto</div>
-      <div class="card-desc">Mostra quais produtos foram mais vendidos: quantidade, número de pedidos e receita gerada por cada um.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Por Período</div>
-      <div class="card-desc">Agrupa as vendas por dia, semana ou mês, com gráfico de barras para visualização rápida.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Por Cliente</div>
-      <div class="card-desc">Lista os clientes que mais compraram: número de pedidos e valor total gasto por cada um.</div>
-    </div>
-  </div>
-
-  <h3>Como interpretar o Resumo</h3>
-  <table class="campos">
-    <thead><tr><th>Indicador</th><th>O que significa</th></tr></thead>
-    <tbody>
-      <tr><td>Total de Pedidos</td><td>Número de pedidos no período selecionado</td></tr>
-      <tr><td>Receita Total</td><td>Soma dos valores de todos os pedidos (exceto cancelados)</td></tr>
-      <tr><td>Ticket Médio</td><td>Receita total ÷ número de pedidos (valor médio por compra)</td></tr>
-      <tr><td>Por Status</td><td>Quantos pedidos estão em cada etapa (pendente, entregue, etc.)</td></tr>
-      <tr><td>Por Tipo</td><td>Divisão entre pedidos de entrega e retirada no balcão</td></tr>
-    </tbody>
-  </table>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Use a aba <strong>Por Produto</strong> para identificar os itens mais populares e garantir que eles nunca fiquem sem estoque.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 9</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     10. DASHBOARD GERENCIAL
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-    </div>
-    <div>
-      <h2>Dashboard gerencial</h2>
-      <span class="tag">Capítulo 10 — Administração</span>
-    </div>
-  </div>
-
-  <p>
-    O dashboard é a tela inicial do painel <strong>Gerencial</strong>. Ele apresenta uma visão rápida da operação — pedidos do dia, desempenho de produtos e situação do estoque — sem precisar consultar relatório algum.
-  </p>
-
-  <h3>Indicadores (KPIs) exibidos</h3>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-titulo">Pedidos hoje</div>
-      <div class="card-desc">Quantidade total de pedidos recebidos no dia de hoje.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Pedidos no mês</div>
-      <div class="card-desc">Total de pedidos do mês corrente.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Ticket médio</div>
-      <div class="card-desc">Valor médio por pedido no mês atual.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Total de produtos</div>
-      <div class="card-desc">Número de produtos ativos no catálogo.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Sem estoque</div>
-      <div class="card-desc">Produtos com quantidade igual a zero.</div>
-    </div>
-    <div class="card">
-      <div class="card-titulo">Estoque baixo</div>
-      <div class="card-desc">Produtos abaixo do estoque mínimo configurado.</div>
-    </div>
-  </div>
-
-  <h3>Tabelas de acompanhamento</h3>
-  <table class="campos">
-    <thead><tr><th>Tabela</th><th>O que mostra</th></tr></thead>
-    <tbody>
-      <tr><td>Pedidos pendentes hoje</td><td>Lista de pedidos ainda não confirmados no dia</td></tr>
-      <tr><td>Top produtos</td><td>Produtos mais vendidos no mês, por receita e quantidade</td></tr>
-      <tr><td>Sem estoque</td><td>Produtos zerados que precisam de reposição urgente</td></tr>
-      <tr><td>Estoque baixo</td><td>Produtos próximos do limite mínimo definido no cadastro</td></tr>
-    </tbody>
-  </table>
-
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Acesse o Dashboard Gerencial ao começar o dia para checar pendências e o estoque crítico antes de abrir a loja.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 10</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     11. MÓDULO FINANCEIRO
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    </div>
-    <div>
-      <h2>Módulo financeiro</h2>
-      <span class="tag">Capítulo 11 — Administração</span>
-    </div>
-  </div>
-
-  <p>
-    O módulo financeiro permite controlar as entradas (receitas) e saídas (despesas) do negócio, além de emitir relatórios e receber alertas automáticos de vencimentos. Acesse pelo menu <strong>Financeiro</strong> — uma senha de segurança será solicitada ao entrar.
-  </p>
-
-  <h3>Abas disponíveis</h3>
-  <table class="campos">
-    <thead><tr><th>Aba</th><th>O que contém</th></tr></thead>
-    <tbody>
-      <tr><td>Receitas</td><td>Registros de entradas financeiras (ex: vendas à vista, recebimentos)</td></tr>
-      <tr><td>Despesas</td><td>Registros de saídas (ex: fornecedores, aluguel, contas fixas)</td></tr>
-      <tr><td>Clientes</td><td>Cadastro de clientes financeiros (para vincular às receitas)</td></tr>
-      <tr><td>Formas de Pagamento</td><td>Dinheiro, cartão, PIX etc. — com possibilidade de taxa (%)</td></tr>
-      <tr><td>Classificações</td><td>Categorias financeiras hierárquicas (ex: Despesas Fixas → Aluguel)</td></tr>
-      <tr><td>Panorama</td><td>Relatório financeiro com totais, gráficos e filtros de período</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Lançar uma receita ou despesa</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="n">1</div>
-      <div class="txt">Selecione a aba <strong>Receitas</strong> ou <strong>Despesas</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">2</div>
-      <div class="txt">Clique em <strong>+ Nova Receita</strong> (ou <strong>+ Nova Despesa</strong>) para abrir o formulário.</div>
-    </div>
-    <div class="step">
-      <div class="n">3</div>
-      <div class="txt">Preencha os campos: <strong>Descrição</strong>, <strong>Valor</strong>, <strong>Vencimento</strong>, <strong>Classificação</strong> e <strong>Forma de Pagamento</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="n">4</div>
-      <div class="txt">Para lançamentos parcelados, informe o número de <strong>parcelas</strong>. O sistema criará um registro para cada parcela automaticamente.</div>
-    </div>
-    <div class="step">
-      <div class="n">5</div>
-      <div class="txt">Clique em <strong>Salvar</strong>. O lançamento aparecerá na lista com situação <em>Em aberto</em> (receita) ou <em>Pendente</em> (despesa).</div>
-    </div>
-  </div>
-
-  <h3>Dar baixa individual ou em lote</h3>
-  <p>Para marcar um lançamento como <strong>Recebido</strong> (receita) ou <strong>Pago</strong> (despesa):</p>
-  <ul class="lista">
-    <li><strong>Baixa individual:</strong> clique no ícone de confirmação (✓) na linha do lançamento desejado.</li>
-    <li><strong>Baixa em lote:</strong> use o botão <strong>"Receber todos"</strong> ou <strong>"Pagar todos"</strong> para dar baixa em todos os lançamentos em aberto da listagem atual de uma só vez.</li>
-  </ul>
-
-  <div class="info">
-    <span class="emoji">ℹ</span>
-    <span>O <strong>desconto</strong> é calculado automaticamente com base na taxa da forma de pagamento selecionada. O valor líquido é exibido na listagem.</span>
-  </div>
-
-  <h3>Panorama financeiro</h3>
-  <p>
-    A aba <strong>Panorama</strong> exibe um resumo do período selecionado com totais de receitas, despesas e saldo. Por padrão mostra os <strong>últimos 30 dias</strong>. Use os atalhos de período ou ajuste manualmente as datas.
-  </p>
-  <ul class="lista">
-    <li>Gráficos de receitas vs. despesas por período</li>
-    <li>Totais por classificação (categoria financeira)</li>
-    <li>Totais por forma de pagamento</li>
-    <li>Exportação em <strong>Excel</strong> e <strong>PDF</strong></li>
-  </ul>
-
-  <h3>Alerta automático de vencimentos (WhatsApp)</h3>
-  <p>
-    Todos os dias às <strong>06h00</strong> o sistema verifica automaticamente as despesas com vencimento para aquele dia e envia um alerta pelo <strong>WhatsApp</strong> para o responsável cadastrado.
-  </p>
-  <div class="dica">
-    <span class="emoji">✔</span>
-    <span>Para testar o alerta manualmente, acesse a aba <strong>Despesas</strong> e clique no botão <strong>"📲 Testar alerta WhatsApp"</strong>. A mensagem será enviada imediatamente.</span>
-  </div>
-
-  <div class="alerta">
-    <span class="emoji">⚠</span>
-    <span>O módulo financeiro é protegido por uma senha adicional. Não compartilhe essa senha com usuários sem necessidade de acesso financeiro.</span>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 11</div>
-</div>
-
-
-<!-- ════════════════════════════════════════════════════════
-     12. REFERÊNCIA — STATUS DOS PEDIDOS
-════════════════════════════════════════════════════════ -->
-<div class="pagina">
-  <div class="sec-header">
-    <div class="icone">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d2a028" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    </div>
-    <div>
-      <h2>Status dos pedidos — referência</h2>
-      <span class="tag">Capítulo 12 — Referência rápida</span>
-    </div>
-  </div>
-
-  <p>Tabela de referência rápida com o significado de cada status de pedido.</p>
-
-  <table class="campos" style="margin-top:1rem">
-    <thead><tr><th>Status</th><th>Significado</th><th>Próxima ação sugerida</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><span class="badge badge-amarelo">Pendente</span></td>
-        <td>Pedido recebido, aguardando análise</td>
-        <td>Confirmar disponibilidade dos itens e passar para "Confirmado"</td>
-      </tr>
-      <tr>
-        <td><span class="badge badge-azul">Confirmado</span></td>
-        <td>Pedido aceito pela loja</td>
-        <td>Iniciar separação/preparo dos itens</td>
-      </tr>
-      <tr>
-        <td><span class="badge" style="background:#fff3e0;color:#e65100">Em preparo</span></td>
-        <td>Itens sendo separados ou preparados</td>
-        <td>Quando estiver pronto, mudar para "Entregue" ou aguardar retirada</td>
-      </tr>
-      <tr>
-        <td><span class="badge badge-verde">Entregue</span></td>
-        <td>Pedido concluído com sucesso</td>
-        <td>Nenhuma — pedido finalizado</td>
-      </tr>
-      <tr>
-        <td><span class="badge badge-vermelho">Cancelado</span></td>
-        <td>Pedido não foi realizado</td>
-        <td>Se necessário, devolver estoque manualmente nos produtos</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr class="divider" />
-
-  <h3>Dicas gerais de uso</h3>
-  <ul class="lista">
-    <li>Acesse o sistema preferencialmente em um computador para uma melhor experiência de administração.</li>
-    <li>Mantenha as <strong>quantidades em estoque</strong> sempre atualizadas para evitar vender produtos indisponíveis.</li>
-    <li>Revise os pedidos com frequência, especialmente nos horários de pico.</li>
-    <li>Use a aba <strong>Relatórios &gt; Por Período</strong> toda semana para acompanhar a evolução das vendas.</li>
-    <li>Ao final de cada promoção, lembre-se de <strong>desativar os banners</strong> correspondentes.</li>
-    <li>Guarde suas credenciais de acesso em local seguro. Em caso de perda, entre em contato com o desenvolvedor.</li>
-  </ul>
-
-  <hr class="divider" />
-
-  <h3>Suporte técnico</h3>
-  <p>
-    Em caso de dúvidas, erros ou solicitações de novas funcionalidades, entre em contato com o desenvolvedor responsável pelo sistema.
-  </p>
-
-  <div style="margin-top:3rem;padding:1.5rem;border:1px solid var(--borda);border-radius:8px;background:#fff;text-align:center">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--escuro);margin-bottom:.3rem">Empório Modelo</div>
-    <div style="font-size:.75rem;color:var(--sub);letter-spacing:.1em;text-transform:uppercase">Manual do Administrador &nbsp;·&nbsp; Versão 2.1 &nbsp;·&nbsp; 2026</div>
-  </div>
-
-  <div class="rodape">Empório Modelo — Manual do Administrador &nbsp;·&nbsp; Capítulo 12</div>
+<div class="wrapper">
+
+  <!-- ── Sidebar ── -->
+  <aside>
+    <div class="sidebar-logo">
+      <span class="produto">⭐ SpecialPoints</span>
+      <span class="subtitulo">Manual do Usuário</span>
+    </div>
+    <nav>
+      <div class="nav-grupo">
+        <div class="nav-grupo-titulo">Introdução</div>
+        <a href="#visao-geral">O que é</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="#niveis">Níveis de acesso</a>
+        <a href="#fluxo">Fluxo de uso</a>
+      </div>
+      <div class="nav-grupo">
+        <div class="nav-grupo-titulo">Área CEO / Admin</div>
+        <a href="#ceo-dashboard">Dashboard</a>
+        <a href="#ceo-grupos">Grupos</a>
+      </div>
+      <div class="nav-grupo">
+        <div class="nav-grupo-titulo">Área do Responsável</div>
+        <a href="#resp-dashboard">Dashboard</a>
+        <a href="#resp-tarefas">Tarefas</a>
+        <a href="#resp-recompensas">Recompensas</a>
+        <a href="#resp-resgates">Resgates</a>
+        <a href="#resp-membros">Membros</a>
+      </div>
+      <div class="nav-grupo">
+        <div class="nav-grupo-titulo">Área do Filho</div>
+        <a href="#filho-dashboard">Dashboard</a>
+        <a href="#filho-tarefas">Tarefas</a>
+        <a href="#filho-premios">Prêmios</a>
+        <a href="#filho-conquistas">Conquistas</a>
+      </div>
+      <div class="nav-grupo">
+        <div class="nav-grupo-titulo">Sistema</div>
+        <a href="#notificacoes">Notificações</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+    <div class="sidebar-versao">Versão 2.0 · Abril 2026</div>
+  </aside>
+
+  <!-- ── Conteúdo ── -->
+  <main>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">Manual do Usuário · v2.0</div>
+      <h1>SpecialPoints</h1>
+      <p>Plataforma de pontos e recompensas que transforma a rotina das crianças em um jogo de conquistas.</p>
+    </div>
+
+    <div class="conteudo">
+
+      <!-- O que é -->
+      <section id="visao-geral">
+        <h2><span class="icone-secao">💡</span> O que é o SpecialPoints?</h2>
+        <p>O <strong>SpecialPoints</strong> é uma plataforma digital que transforma a rotina das crianças em um jogo de conquistas. Os pais criam tarefas, os filhos completam e ganham pontos, e trocam esses pontos por recompensas escolhidas pela própria família.</p>
+        <p><strong>Simples para os pais. Divertido para os filhos. Efetivo para todos.</strong></p>
+      </section>
+
+      <!-- Para quem -->
+      <section id="para-quem">
+        <h2><span class="icone-secao">👥</span> Para quem é?</h2>
+        <ul>
+          <li><strong>Famílias</strong> que querem engajar os filhos em responsabilidades do dia a dia</li>
+          <li><strong>Pais</strong> que buscam uma forma estruturada de recompensar bons hábitos</li>
+          <li><strong>Filhos</strong> que se motivam mais com metas visuais, pontos e prêmios</li>
+        </ul>
+      </section>
+
+      <!-- Níveis de acesso -->
+      <section id="niveis">
+        <h2><span class="icone-secao">🔑</span> Níveis de acesso</h2>
+        <p>O sistema possui quatro perfis distintos, cada um com sua área e permissões:</p>
+        <div class="cards-papel">
+          <div class="card-papel">
+            <div class="papel-icone">👑</div>
+            <div class="papel-nome">CEO / Admin</div>
+            <div class="papel-quem">Gestor da plataforma</div>
+            <p class="papel-desc">Gerencia todas as famílias, cria grupos e os primeiros acessos.</p>
+          </div>
+          <div class="card-papel">
+            <div class="papel-icone">🛡️</div>
+            <div class="papel-nome">Super Responsável</div>
+            <div class="papel-quem">Primeiro pai/mãe da família</div>
+            <p class="papel-desc">Cria outros responsáveis e filhos dentro da família.</p>
+          </div>
+          <div class="card-papel">
+            <div class="papel-icone">👨‍👩‍👧</div>
+            <div class="papel-nome">Responsável</div>
+            <div class="papel-quem">Pai, mãe ou tutor</div>
+            <p class="papel-desc">Cria tarefas, aprova conclusões, gerencia recompensas e resgates.</p>
+          </div>
+          <div class="card-papel">
+            <div class="papel-icone">🧒</div>
+            <div class="papel-nome">Filho</div>
+            <div class="papel-quem">A criança</div>
+            <p class="papel-desc">Conclui tarefas, acumula pontos e resgata recompensas.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fluxo -->
+      <section id="fluxo">
+        <h2><span class="icone-secao">🔄</span> Fluxo básico de uso</h2>
+        <div class="fluxo">
+          <div class="fluxo-passo">
+            <div class="fluxo-num">1</div>
+            <div class="fluxo-texto">
+              <strong>CEO cria o grupo (família)</strong>
+              <span>Define o nome e cria o primeiro acesso com senha temporária</span>
+            </div>
+          </div>
+          <div class="fluxo-passo">
+            <div class="fluxo-num">2</div>
+            <div class="fluxo-texto">
+              <strong>Super Responsável acessa e troca a senha</strong>
+              <span>Troca obrigatória no primeiro login</span>
+            </div>
+          </div>
+          <div class="fluxo-passo">
+            <div class="fluxo-num">3</div>
+            <div class="fluxo-texto">
+              <strong>Super Responsável cadastra filhos e demais responsáveis</strong>
+              <span>Gerencia os membros da família</span>
+            </div>
+          </div>
+          <div class="fluxo-passo">
+            <div class="fluxo-num">4</div>
+            <div class="fluxo-texto">
+              <strong>Responsável cria tarefas e recompensas</strong>
+              <span>Define pontos, prazos e recorrência</span>
+            </div>
+          </div>
+          <div class="fluxo-passo">
+            <div class="fluxo-num">5</div>
+            <div class="fluxo-texto">
+              <strong>Filho conclui tarefas e ganha pontos</strong>
+              <span>Responsável aprova e os pontos são creditados</span>
+            </div>
+          </div>
+          <div class="fluxo-passo">
+            <div class="fluxo-num">6</div>
+            <div class="fluxo-texto">
+              <strong>Filho resgata recompensas</strong>
+              <span>Responsável aprova e marca como entregue</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CEO ── -->
+      <section id="ceo-dashboard">
+        <h2><span class="icone-secao">📊</span> CEO — Dashboard</h2>
+        <p>Visão geral de toda a plataforma em tempo real:</p>
+        <table>
+          <thead><tr><th>Indicador</th><th>O que mostra</th></tr></thead>
+          <tbody>
+            <tr><td>👨‍👩‍👧 Grupos</td><td>Total de famílias cadastradas</td></tr>
+            <tr><td>👤 Usuários</td><td>Total de membros ativos</td></tr>
+            <tr><td>✅ Tarefas</td><td>Total de tarefas criadas</td></tr>
+            <tr><td>💸 Transações</td><td>Movimentações de pontos</td></tr>
+            <tr><td>🎁 Resgates</td><td>Resgates realizados</td></tr>
+            <tr><td>🔔 Notif. não lidas</td><td>Alertas pendentes no sistema</td></tr>
+          </tbody>
+        </table>
+        <p>Inclui também gráfico de rosca (distribuição geral) e ranking de famílias por número de membros.</p>
+      </section>
+
+      <section id="ceo-grupos">
+        <h2><span class="icone-secao">👨‍👩‍👧</span> CEO — Gerenciamento de Grupos</h2>
+        <h3>Criar um grupo (família)</h3>
+        <div class="passos">
+          <div class="passo"><div class="passo-num">1</div><div class="passo-texto">Acesse <strong>Grupos → Novo grupo</strong></div></div>
+          <div class="passo"><div class="passo-num">2</div><div class="passo-texto">Informe o nome da família</div></div>
+          <div class="passo"><div class="passo-num">3</div><div class="passo-texto">Acesse o grupo criado e clique em <strong>Adicionar membro</strong></div></div>
+          <div class="passo"><div class="passo-num">4</div><div class="passo-texto">Preencha nome, e-mail, papel <em>(Super Responsável)</em> e senha temporária</div></div>
+        </div>
+        <blockquote><strong>Atenção:</strong> O usuário criado pelo CEO será obrigado a trocar a senha no primeiro acesso.</blockquote>
+        <h3>Outras ações disponíveis</h3>
+        <ul>
+          <li>Renomear um grupo</li>
+          <li>Visualizar todos os membros com papel e pontos</li>
+          <li>Desativar ou reativar grupos</li>
+        </ul>
+      </section>
+
+      <!-- ── Responsável ── -->
+      <section id="resp-dashboard">
+        <h2><span class="icone-secao">🏠</span> Responsável — Dashboard</h2>
+        <p>Resumo completo da família:</p>
+        <ul>
+          <li>Gráfico de rosca com distribuição de tarefas por status</li>
+          <li>Barras comparativas de pontos entre os filhos</li>
+          <li>Cards de membros ativos</li>
+          <li>Tarefas aguardando aprovação em destaque</li>
+        </ul>
+      </section>
+
+      <section id="resp-tarefas">
+        <h2><span class="icone-secao">✅</span> Responsável — Tarefas</h2>
+        <h3>Criar uma tarefa</h3>
+        <div class="passos">
+          <div class="passo"><div class="passo-num">1</div><div class="passo-texto">Clique em <strong>+ Nova tarefa</strong></div></div>
+          <div class="passo"><div class="passo-num">2</div><div class="passo-texto">Preencha título, pontos e atribua a um filho</div></div>
+          <div class="passo"><div class="passo-num">3</div><div class="passo-texto"><strong>(Opcional)</strong> Defina recorrência: Diária, Semanal ou Mensal</div></div>
+          <div class="passo"><div class="passo-num">4</div><div class="passo-texto"><strong>(Opcional)</strong> Defina data de vencimento</div></div>
+          <div class="passo"><div class="passo-num">5</div><div class="passo-texto">Clique em <strong>Criar</strong> — o filho é notificado automaticamente</div></div>
+        </div>
+
+        <h3>Aprovação de tarefas</h3>
+        <p>Quando o filho marca uma tarefa como feita, o status muda para <span class="chip chip-azul">Aguardando</span>. O responsável pode:</p>
+        <ul>
+          <li><strong>Aprovar</strong> → pontos creditados automaticamente ao filho</li>
+          <li><strong>Rejeitar</strong> → com ou sem observação; filho é notificado com o motivo</li>
+        </ul>
+
+        <h3>Tarefas recorrentes</h3>
+        <p>Ao aprovar uma tarefa com recorrência configurada, uma nova cópia é criada automaticamente com o próximo prazo calculado. Não é necessário recriar manualmente.</p>
+
+        <h3>Indicadores visuais</h3>
+        <table>
+          <thead><tr><th>Badge</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td>🔄 Diária / Semanal / Mensal</td><td>Tarefa recorrente</td></tr>
+            <tr><td>📅 data</td><td>Prazo definido</td></tr>
+            <tr><td>⚠️ Atrasada</td><td>Prazo vencido com tarefa ainda aberta</td></tr>
+            <tr><td><span class="chip chip-azul">Aguardando</span></td><td>Filho concluiu, esperando aprovação</td></tr>
+            <tr><td><span class="chip chip-verde">Concluída</span></td><td>Aprovada e pontos creditados</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="resp-recompensas">
+        <h2><span class="icone-secao">🎁</span> Responsável — Recompensas</h2>
+        <h3>Criar uma recompensa</h3>
+        <div class="passos">
+          <div class="passo"><div class="passo-num">1</div><div class="passo-texto">Clique em <strong>+ Nova recompensa</strong></div></div>
+          <div class="passo"><div class="passo-num">2</div><div class="passo-texto">Defina título e custo em pontos</div></div>
+          <div class="passo"><div class="passo-num">3</div><div class="passo-texto">Defina estoque (deixe vazio para ilimitado)</div></div>
+          <div class="passo"><div class="passo-num">4</div><div class="passo-texto">Salve — a recompensa aparece imediatamente na loja dos filhos</div></div>
+        </div>
+
+        <h3>Seções da tela</h3>
+        <table>
+          <thead><tr><th>Seção</th><th>O que aparece</th><th>Visível para filhos?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Disponíveis</strong></td><td>Ativas com estoque</td><td>✅ Sim</td></tr>
+            <tr><td><strong>Esgotadas / Desativadas</strong></td><td>Sem estoque ou desativadas</td><td>❌ Não</td></tr>
+          </tbody>
+        </table>
+        <blockquote>Ao desativar uma recompensa, ela some da loja dos filhos instantaneamente.</blockquote>
+      </section>
+
+      <section id="resp-resgates">
+        <h2><span class="icone-secao">🛒</span> Responsável — Resgates</h2>
+        <p>Painel com todos os pedidos de resgate dos filhos. Filtre por status:</p>
+        <div class="tabs-area">
+          <span class="tab ativa">Todos</span>
+          <span class="tab">Pendentes</span>
+          <span class="tab">Aprovados</span>
+          <span class="tab">Entregues</span>
+          <span class="tab">Recusados</span>
+        </div>
+        <table>
+          <thead><tr><th>Ação</th><th>O que acontece</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Aprovar</strong></td><td>Confirma o resgate (pontos já foram descontados no momento do pedido)</td></tr>
+            <tr><td><strong>Recusar</strong></td><td>Os pontos são devolvidos automaticamente ao filho</td></tr>
+            <tr><td><strong>Marcar como entregue</strong></td><td>Registra que a recompensa física foi entregue</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="resp-membros">
+        <h2><span class="icone-secao">👥</span> Responsável — Membros</h2>
+        <p>Lista de todos os integrantes da família com papel, pontos (somente filhos) e status. <strong>Super Responsáveis</strong> podem adicionar novos membros diretamente por aqui, definindo nome, e-mail, papel e senha temporária.</p>
+      </section>
+
+      <!-- ── Filho ── -->
+      <section id="filho-dashboard">
+        <h2><span class="icone-secao">🧒</span> Filho — Dashboard</h2>
+        <p>Interface otimizada para celular, com navegação por abas na parte inferior da tela.</p>
+        <ul>
+          <li><strong>Seus pontos</strong> — saldo atual em destaque, com animação</li>
+          <li><strong>Pontos essa semana</strong> — bônus acumulado nos últimos 7 dias</li>
+          <li><strong>Metas ativas</strong> — barra de progresso para cada meta em andamento</li>
+          <li><strong>Para fazer</strong> — tarefas pendentes com botão <em>"Feito!"</em> para marcar como concluída</li>
+          <li><strong>Avisos</strong> — notificações recentes</li>
+        </ul>
+      </section>
+
+      <section id="filho-tarefas">
+        <h2><span class="icone-secao">📋</span> Filho — Tarefas</h2>
+        <p>Lista de todas as tarefas atribuídas ao filho com filtros por status. Cada tarefa exibe os pontos, prazo (se houver) e indicador visual de urgência. Ao clicar em <strong>"Feito!"</strong>, a tarefa entra em modo de espera até o responsável aprovar.</p>
+      </section>
+
+      <section id="filho-premios">
+        <h2><span class="icone-secao">🏆</span> Filho — Prêmios</h2>
+        <h4>Aba Loja</h4>
+        <p>Todas as recompensas disponíveis com barra de progresso mostrando quantos pontos faltam. O botão <strong>🎉 Resgatar</strong> é habilitado automaticamente quando o saldo é suficiente. Ao resgatar, os pontos são descontados e o pedido fica pendente até aprovação.</p>
+
+        <h4>Aba Resgates</h4>
+        <p>Histórico de pedidos com status visual por cor:</p>
+        <table>
+          <thead><tr><th>Cor</th><th>Status</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="chip chip-amarelo">●</span></td><td>Pendente</td><td>Aguardando aprovação do responsável</td></tr>
+            <tr><td><span class="chip chip-roxo">●</span></td><td>Aprovado</td><td>Aprovado, aguardando entrega</td></tr>
+            <tr><td><span class="chip chip-verde">●</span></td><td>Entregue</td><td>Recompensa entregue</td></tr>
+            <tr><td><span style="background:#fee2e2;color:#991b1b" class="chip">●</span></td><td>Recusado</td><td>Recusado e pontos devolvidos</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Aba Histórico</h4>
+        <p>Extrato completo de movimentações de pontos: cada tarefa aprovada, bônus recebido e resgate feito, com data e valor (em verde para créditos, vermelho para débitos).</p>
+      </section>
+
+      <section id="filho-conquistas">
+        <h2><span class="icone-secao">🥇</span> Filho — Conquistas</h2>
+        <p>Galeria de badges desbloqueáveis. Os bloqueados aparecem como desafios a alcançar; os desbloqueados mostram a data em que foram conquistados.</p>
+        <div class="grid-badges">
+          <div class="badge-item"><div class="bi">🌟</div><strong>Primeira tarefa!</strong><span>Conclua sua primeira tarefa</span></div>
+          <div class="badge-item"><div class="bi">🔥</div><strong>Dedicado</strong><span>Conclua 10 tarefas</span></div>
+          <div class="badge-item"><div class="bi">🏆</div><strong>Campeão</strong><span>Conclua 50 tarefas</span></div>
+          <div class="badge-item"><div class="bi">🎯</div><strong>Meta atingida!</strong><span>Conclua sua primeira meta</span></div>
+          <div class="badge-item"><div class="bi">🎁</div><strong>Primeiro prêmio!</strong><span>Faça seu primeiro resgate</span></div>
+          <div class="badge-item"><div class="bi">💯</div><strong>Centenário</strong><span>Acumule 100 pontos</span></div>
+          <div class="badge-item"><div class="bi">💎</div><strong>Explorador</strong><span>Acumule 500 pontos</span></div>
+          <div class="badge-item"><div class="bi">👑</div><strong>Lendário</strong><span>Acumule 1000 pontos</span></div>
+        </div>
+      </section>
+
+      <!-- Notificações -->
+      <section id="notificacoes">
+        <h2><span class="icone-secao">🔔</span> Notificações automáticas</h2>
+        <p>Todos os eventos importantes geram notificações automáticas dentro da plataforma:</p>
+        <div class="notif-lista">
+          <div class="notif-item"><div class="notif-icone">📌</div><div class="notif-evento">Tarefa atribuída</div><div class="notif-quem">→ Filho</div></div>
+          <div class="notif-item"><div class="notif-icone">⏳</div><div class="notif-evento">Tarefa concluída (aguardando aprovação)</div><div class="notif-quem">→ Responsável</div></div>
+          <div class="notif-item"><div class="notif-icone">✅</div><div class="notif-evento">Tarefa aprovada</div><div class="notif-quem">→ Filho</div></div>
+          <div class="notif-item"><div class="notif-icone">❌</div><div class="notif-evento">Tarefa rejeitada (com motivo)</div><div class="notif-quem">→ Filho</div></div>
+          <div class="notif-item"><div class="notif-icone">🎯</div><div class="notif-evento">Meta atingida</div><div class="notif-quem">→ Filho</div></div>
+          <div class="notif-item"><div class="notif-icone">🛒</div><div class="notif-evento">Resgate solicitado</div><div class="notif-quem">→ Responsável</div></div>
+          <div class="notif-item"><div class="notif-icone">🎁</div><div class="notif-evento">Resgate aprovado / recusado</div><div class="notif-quem">→ Filho</div></div>
+          <div class="notif-item"><div class="notif-icone">🔄</div><div class="notif-evento">Tarefa recorrente renovada</div><div class="notif-quem">→ Filho</div></div>
+        </div>
+      </section>
+
+      <!-- Segurança -->
+      <section id="seguranca">
+        <h2><span class="icone-secao">🔒</span> Segurança e acesso</h2>
+        <div class="seguranca-grid">
+          <div class="seg-item"><div class="seg-icone">🔑</div><div class="seg-texto"><strong>Autenticação JWT</strong><span>Tokens seguros com expiração automática</span></div></div>
+          <div class="seg-item"><div class="seg-icone">🏠</div><div class="seg-texto"><strong>Isolamento por família</strong><span>Cada família só acessa seus próprios dados</span></div></div>
+          <div class="seg-item"><div class="seg-icone">🔐</div><div class="seg-texto"><strong>Senhas com bcrypt</strong><span>Criptografia forte, sem armazenamento em texto</span></div></div>
+          <div class="seg-item"><div class="seg-icone">🔄</div><div class="seg-texto"><strong>Troca obrigatória</strong><span>Senha temporária trocada no primeiro acesso</span></div></div>
+          <div class="seg-item"><div class="seg-icone">🛡️</div><div class="seg-texto"><strong>Controle de papéis</strong><span>Cada perfil acessa apenas sua própria área</span></div></div>
+          <div class="seg-item"><div class="seg-icone">⚡</div><div class="seg-texto"><strong>Auto-refresh de token</strong><span>Sessão renovada automaticamente sem logout</span></div></div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2><span class="icone-secao">❓</span> Perguntas frequentes</h2>
+        <div class="faq">
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>Os pontos expiram?</summary>
+            <div class="faq-resposta">Não. Os pontos acumulados ficam no histórico para sempre e podem ser consultados a qualquer momento na aba Histórico.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>O que acontece se um resgate for recusado?</summary>
+            <div class="faq-resposta">Os pontos são devolvidos automaticamente ao saldo do filho assim que o responsável recusar o pedido.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>Posso desativar uma tarefa sem excluí-la?</summary>
+            <div class="faq-resposta">Sim. O botão Ativa/Inativa oculta a tarefa do filho sem apagá-la. Você pode reativá-la a qualquer momento.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>Uma tarefa recorrente pode ter prazo?</summary>
+            <div class="faq-resposta">Sim. Defina a data de vencimento na criação; a cada renovação, o prazo avança automaticamente pelo período configurado (1 dia, 7 dias ou 30 dias).</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>O filho pode ver recompensas sem estoque?</summary>
+            <div class="faq-resposta">Não. Recompensas esgotadas ou desativadas são automaticamente ocultadas da loja dos filhos.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>Como adicionar mais membros à família?</summary>
+            <div class="faq-resposta">O Super Responsável acessa a aba <strong>Membros</strong> e clica em <strong>+ Adicionar membro</strong>, definindo nome, e-mail, papel e senha temporária.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-pergunta"><span class="faq-q">Q</span>Quantas famílias posso cadastrar?</summary>
+            <div class="faq-resposta">Não há limite. O CEO pode criar e gerenciar quantos grupos quiser, cada um completamente isolado dos outros.</div>
+          </details>
+        </div>
+      </section>
+
+    </div><!-- /conteudo -->
+
+    <footer>
+      <strong>SpecialPoints</strong> · Sistema de pontos e recompensas para famílias · v2.0 · Abril 2026
+    </footer>
+
+  </main>
 </div>
 
 </body>
