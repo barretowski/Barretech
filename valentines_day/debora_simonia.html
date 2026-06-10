@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debora Simonia</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --rosa:       #f4a7b9;
+    --rosa-esc:   #c96b8a;
+    --vinho-rosa: #7a2848;
+    --creme:      #fff8f9;
+    --champagne:  #f5e6ea;
+    --branco:     #ffffff;
+    --texto:      #3d1828;
+    --sub:        #9a607a;
+    --ouro:       #c9963e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(155deg, #7a2848 0%, #3d0e22 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 65% 45% at 15% 85%, rgba(244,167,185,.2) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 85% 15%, rgba(201,150,62,.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-anel {
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid rgba(244,167,185,.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 1.5rem;
+    color: var(--rosa);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.1;
+    letter-spacing: .02em;
+  }
+
+  .hero h1 span {
+    color: var(--rosa);
+    display: block;
+    font-style: normal;
+    font-weight: 300;
+    font-size: .6em;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+
+  .hero-linha {
+    width: 50px;
+    height: 1.5px;
+    background: var(--ouro);
+    margin: 2rem auto;
+    border-radius: 2px;
+  }
+
+  .hero-sub {
+    font-size: clamp(.85rem, 2.2vw, 1rem);
+    color: rgba(255,255,255,.55);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .hero-data {
+    margin-top: 3.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .95rem;
+    color: rgba(255,255,255,.3);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem;
+    color: rgba(255,255,255,.25);
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll svg { animation: bounce 2s ease-in-out infinite; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* ── SEÇÃO GENÉRICA ───────────────────────────────────── */
+  .secao {
+    padding: 6rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .secao-titulo {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .secao-titulo .tag {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    color: var(--rosa-esc);
+    display: block;
+    margin-bottom: .8rem;
+  }
+
+  .secao-titulo h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--vinho-rosa);
+    line-height: 1.15;
+  }
+
+  .secao-titulo .ornamento {
+    width: 36px;
+    height: 1.5px;
+    background: var(--rosa);
+    margin: 1.2rem auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── MENSAGEM PRINCIPAL ───────────────────────────────── */
+  .mensagem {
+    background: linear-gradient(155deg, #7a2848 0%, #5a1a34 100%);
+    padding: 7rem 2rem;
+  }
+
+  .mensagem-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mensagem-inner .aspas {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    color: var(--rosa);
+    line-height: .5;
+    opacity: .35;
+    display: block;
+    margin-bottom: 1.8rem;
+  }
+
+  .mensagem-inner p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--branco);
+    line-height: 1.75;
+  }
+
+  .mensagem-inner .assinatura {
+    margin-top: 2.2rem;
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    opacity: .65;
+  }
+
+  /* ── FOTO DESTAQUE ────────────────────────────────────── */
+  .foto-destaque {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 620px;
+  }
+
+  .foto-destaque img {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .foto-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 2rem 1.8rem;
+    background: linear-gradient(to top, rgba(40,5,20,.9) 0%, transparent 100%);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+  }
+
+  /* ── MOMENTOS ─────────────────────────────────────────── */
+  .momentos {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 6rem;
+  }
+
+  .momento {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .momento.inv { flex-direction: row-reverse; }
+
+  .momento-foto {
+    flex: 0 0 55%;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 420px;
+    background: var(--champagne);
+  }
+
+  .momento-foto img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+  }
+
+  .momento:hover .momento-foto img { transform: scale(1.03); }
+
+  .momento-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .momento-num {
+    font-size: .68rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--rosa-esc);
+  }
+
+  .momento-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--vinho-rosa);
+    line-height: 1.5;
+  }
+
+  .momento-ornamento {
+    width: 28px;
+    height: 1.5px;
+    background: var(--rosa);
+    border-radius: 2px;
+    margin-top: .5rem;
+  }
+
+  /* ── SEÇÃO DE VÍDEOS ──────────────────────────────────── */
+  .videos-bg {
+    background: var(--champagne);
+    padding: 6rem 2rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .video-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ecd0da;
+    position: relative;
+    aspect-ratio: 9 / 16;
+    max-height: 520px;
+  }
+
+  .video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    background: linear-gradient(160deg, #f4d0dc 0%, #e4b8c8 100%);
+    color: var(--vinho-rosa);
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .55;
+  }
+
+  /* ── FECHO ────────────────────────────────────────────── */
+  .fecho {
+    background: linear-gradient(155deg, #7a2848 0%, #3d0e22 100%);
+    padding: 9rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fecho::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(244,167,185,.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .fecho h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.25;
+  }
+
+  .fecho h2 span { color: var(--rosa); }
+
+  .fecho-anel {
+    font-size: 1.4rem;
+    color: var(--rosa);
+    opacity: .5;
+    margin-top: 2.5rem;
+    display: block;
+    letter-spacing: .5rem;
+  }
+
+  .fecho-data {
+    margin-top: 3rem;
+    font-size: .72rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.2);
+  }
+
+  /* ── RODAPÉ ───────────────────────────────────────────── */
+  .rodape {
+    background: #220510;
+    padding: 2rem;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.15);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVO ───────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .momento, .momento.inv {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .momento-foto { flex: unset; width: 100%; }
+    .momentos { gap: 4rem; margin-top: 4rem; }
+    .foto-destaque img { height: 340px; }
+  }
+
+  /* ── PROPOSTA ─────────────────────────────────────────── */
+  .proposta {
+    background: linear-gradient(155deg, #5a1430 0%, #2e0818 100%);
+    padding: 8rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proposta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(244,167,185,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .proposta-anel {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 2rem;
+    animation: pulsar 2s ease-in-out infinite;
+  }
+
+  @keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.15); }
+  }
+
+  .proposta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.4;
+    max-width: 680px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .proposta h2 span { color: var(--rosa); }
+
+  .proposta-sub {
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+    margin-bottom: 3.5rem;
+    display: block;
+  }
+
+  .proposta-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-sim {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    background: var(--rosa-esc);
+    color: #fff;
+    border: none;
+    padding: 1rem 2.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: .05em;
+    transition: background .3s, transform .2s, box-shadow .3s;
+    box-shadow: 0 4px 24px rgba(201,107,138,.35);
+  }
+
+  .btn-sim:hover {
+    background: #a0506e;
+    transform: scale(1.05);
+    box-shadow: 0 6px 32px rgba(201,107,138,.5);
+  }
+
+  .btn-nao {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    background: transparent;
+    color: rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.15);
+    padding: .6rem 1.4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: .1em;
+    transition: opacity .2s;
+    position: relative;
+  }
+
+  /* ── CELEBRAÇÃO (overlay) ─────────────────────────────── */
+  .celebracao {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 5, 18, .96);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease;
+  }
+
+  .celebracao.ativo {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .celebracao-coracao {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 2rem;
+    animation: pulsar 1.5s ease-in-out infinite;
+  }
+
+  .celebracao h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+
+  .celebracao h2 span { color: var(--rosa); }
+
+  .celebracao p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(255,255,255,.65);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .celebracao-fechar {
+    font-size: .75rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.15);
+    padding: .6rem 1.6rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+  }
+
+  .celebracao-fechar:hover { color: var(--rosa); border-color: var(--rosa); }
+
+  /* ── PÉTALAS ──────────────────────────────────────────── */
+  .petala {
+    position: fixed;
+    top: -2rem;
+    pointer-events: none;
+    z-index: 9999;
+    animation: cair linear forwards;
+    user-select: none;
+  }
+
+  @keyframes cair {
+    0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg) scale(.6); opacity: 0; }
+  }
+
+  /* ── CONTADOR ─────────────────────────────────────────── */
+  .contador {
+    background: linear-gradient(155deg, #3d0e22 0%, #5a1a34 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .contador-label {
+    font-size: .7rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    opacity: .7;
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .contador-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: .5rem 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contador-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+  }
+
+  .contador-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300;
+    color: var(--branco);
+    line-height: 1;
+    min-width: 2ch;
+    display: block;
+    transition: opacity .15s;
+  }
+
+  .contador-unidade {
+    font-size: .6rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+  }
+
+  .contador-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--rosa);
+    opacity: .3;
+    line-height: 1;
+    padding-bottom: .6rem;
+    align-self: flex-end;
+  }
+
+  .contador-sub {
+    margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.95rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,.35);
+  }
+
+  .contador-sub span { color: var(--rosa); opacity: .8; }
+
+  /* ── PLAYER DE MÚSICA ─────────────────────────────────── */
+  .player {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .6rem;
+  }
+
+  .player-info {
+    background: rgba(30, 5, 18, .92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(244,167,185,.2);
+    border-radius: 50px;
+    padding: .5rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .3s, transform .3s;
+    pointer-events: none;
+  }
+
+  .player-info.visivel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .player-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .88rem;
+    color: var(--branco);
+    white-space: nowrap;
+  }
+
+  .player-artista {
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    opacity: .7;
+  }
+
+  .player-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--rosa-esc);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(201,107,138,.4);
+    transition: transform .3s, box-shadow .3s;
+    position: relative;
+  }
+
+  .player-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(201,107,138,.6);
+  }
+
+  .player-btn svg { transition: opacity .2s; }
+
+  .player-btn .ico-pause { display: none; }
+
+  .player-btn.tocando .ico-play  { display: none; }
+  .player-btn.tocando .ico-pause { display: block; }
+
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .player-btn.tocando {
+    animation: girar 4s linear infinite;
+  }
+
+  .player-btn.tocando:hover { animation-play-state: paused; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-anel">♡</div>
+
+  <h1>
+    <span>para a minha eterna namorada</span>
+    Debora
+  </h1>
+
+  <div class="hero-linha"></div>
+
+  <p class="hero-sub">uma vida ao seu lado é tudo que eu quero</p>
+
+  <p class="hero-data">12 de Junho · Dia dos Namorados · 2026</p>
+
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    rolar
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     CONTADOR AO VIVO
+════════════════════════════════════════════════════════ -->
+<section class="contador">
+  <span class="contador-label">juntos há</span>
+  <div class="contador-grid">
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-anos">0</span>
+      <span class="contador-unidade">anos</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-meses">0</span>
+      <span class="contador-unidade">meses</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-dias">0</span>
+      <span class="contador-unidade">dias</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-horas">00</span>
+      <span class="contador-unidade">horas</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-min">00</span>
+      <span class="contador-unidade">minutos</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-seg">00</span>
+      <span class="contador-unidade">segundos</span>
+    </div>
+  </div>
+  <p class="contador-sub">desde <span>01 de março de 2019</span> — e contando.</p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     MENSAGEM PRINCIPAL
+════════════════════════════════════════════════════════ -->
+<section class="mensagem">
+  <div class="mensagem-inner">
+    <span class="aspas">"</span>
+    <p>
+      <!-- PLACEHOLDER: insira aqui a mensagem principal -->
+      Aqui vai uma mensagem especial, para a minha pessoa especial.
+    </p>
+    <span class="assinatura">
+      <!-- PLACEHOLDER: assinatura -->
+      — com todo meu amor
+    </span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     GALERIA — HISTÓRIA EM SCROLL
+════════════════════════════════════════════════════════ -->
+<section class="secao">
+  <div class="secao-titulo">
+    <span class="tag">Nossa história em fotos</span>
+    <h2>Do início ao sempre</h2>
+    <div class="ornamento"></div>
+  </div>
+
+  <!-- FOTO 18 — destaque · início do namoro · 01/03/2019 -->
+  <div class="foto-destaque">
+    <img src="../public/img/debora/foto-18.jpeg" alt="pedido de namoro · 01 de março de 2019">
+    <div class="foto-legenda">
+      <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;display:block;margin-bottom:.4rem">01 de março de 2019</span>
+      o início de tudo — o dia que eu te pedi pra namorar comigo, e você disse sim.
+    </div>
+  </div>
+
+  <div class="momentos">
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-01.jpeg" alt="momento 1"></div>
+      <div class="momento-texto">
+        <span class="momento-num">01</span>
+        <p class="momento-frase">desde o primeiro dia, eu já sabia que você era diferente de tudo que eu já tinha vivido.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-02.jpeg" alt="momento 2"></div>
+      <div class="momento-texto">
+        <span class="momento-num">02</span>
+        <p class="momento-frase">você me apresentou a uma versão de mim que eu nunca tinha conhecido — e eu não quero mais perder.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-03.jpeg" alt="momento 3"></div>
+      <div class="momento-texto">
+        <span class="momento-num">03</span>
+        <p class="momento-frase">tem um jeito que você ri que faz tudo ao redor parar de existir. eu podia ficar olhando pra sempre.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-04.jpeg" alt="momento 4"></div>
+      <div class="momento-texto">
+        <span class="momento-num">04</span>
+        <p class="momento-frase">você é bonita de dentro pra fora, de um jeito que vai muito além do que os olhos alcançam.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-05.jpeg" alt="momento 5"></div>
+      <div class="momento-texto">
+        <span class="momento-num">05</span>
+        <p class="momento-frase">você é a prova viva de que Deus sabe exatamente o que está fazendo — mesmo quando a gente não sabe.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-06.jpeg" alt="momento 6"></div>
+      <div class="momento-texto">
+        <span class="momento-num">06</span>
+        <p class="momento-frase">a sua fé me ensina. a sua força me inspira. o seu amor me transforma. você me aproxima de Deus todo dia.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-07.jpeg" alt="momento 7"></div>
+      <div class="momento-texto">
+        <span class="momento-num">07</span>
+        <p class="momento-frase">do seu lado eu aprendi o que significa amar de verdade — com cuidado, com respeito, com Deus no meio.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-08.jpeg" alt="momento 8"></div>
+      <div class="momento-texto">
+        <span class="momento-num">08</span>
+        <p class="momento-frase">você é a luz que ilumina até os dias que parecem não ter saída. minha luz, minha paz, meu norte.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-09.jpeg" alt="momento 9"></div>
+      <div class="momento-texto">
+        <span class="momento-num">09</span>
+        <p class="momento-frase">a paz que eu sinto perto de você não tem explicação humana. só tem Deus.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-10.jpeg" alt="momento 10"></div>
+      <div class="momento-texto">
+        <span class="momento-num">10</span>
+        <p class="momento-frase">você me faz querer ser mais, fazer mais, ser melhor — todo dia, sem falta, sem parar.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-12.jpeg" alt="momento 11"></div>
+      <div class="momento-texto">
+        <span class="momento-num">11</span>
+        <p class="momento-frase">cada memória nossa é uma bênção que eu guardo com muito cuidado dentro do meu coração.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-13.jpeg" alt="momento 12"></div>
+      <div class="momento-texto">
+        <span class="momento-num">12</span>
+        <p class="momento-frase">não existe versão da minha vida que faça sentido sem você dentro dela. nenhuma.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-14.jpeg" alt="momento 13"></div>
+      <div class="momento-texto">
+        <span class="momento-num">13</span>
+        <p class="momento-frase">a vida tem mais cor, mais sentido, mais graça desde que você entrou nela.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-15.jpeg" alt="momento 14"></div>
+      <div class="momento-texto">
+        <span class="momento-num">14</span>
+        <p class="momento-frase">minha casa é onde você estiver. sempre foi, e sempre vai ser.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-16.jpeg" alt="momento 15"></div>
+      <div class="momento-texto">
+        <span class="momento-num">15</span>
+        <p class="momento-frase">te proteger é um compromisso que faço não só com você, mas diante de Deus — e eu levo isso a sério.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-17.jpeg" alt="momento 16"></div>
+      <div class="momento-texto">
+        <span class="momento-num">16</span>
+        <p class="momento-frase">eu não sou o homem que sou hoje sem você no meio da minha história. simples assim.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- foto-11: os dois com anel e buquê — penúltimo -->
+    <div class="momento">
+      <div class="momento-foto"><img src="../public/img/debora/foto-11.jpeg" alt="nós dois com o anel e o buquê"></div>
+      <div class="momento-texto">
+        <span class="momento-num">17</span>
+        <p class="momento-frase">você, eu, o anel, o buquê — e a certeza mais bonita, mais sagrada e mais verdadeira da minha vida.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- foto-19: ela com anel · noivado · 15/02/2025 — último -->
+    <div class="momento inv">
+      <div class="momento-foto"><img src="../public/img/debora/foto-19.jpeg" alt="noivado · 15 de fevereiro de 2025"></div>
+      <div class="momento-texto">
+        <span class="momento-num" style="color:var(--ouro)">15 · 02 · 2025</span>
+        <p class="momento-frase">o dia que eu te pedi em casamento. o dia mais lindo da minha vida. e você disse sim — de novo.</p>
+        <div class="momento-ornamento" style="background:var(--ouro);width:40px"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PROPOSTA
+════════════════════════════════════════════════════════ -->
+<section class="proposta">
+  <span class="proposta-anel">💍</span>
+  <h2>
+    Você aceita continuar <span>vivendo cada um</span><br>
+    desses momentos ao meu lado,<br>
+    para <span>sempre?</span>
+  </h2>
+  <span class="proposta-sub">pense bem antes de responder…</span>
+  <div class="proposta-btns">
+    <button class="btn-sim" id="btn-sim">Sim, para sempre ♡</button>
+    <button class="btn-nao" id="btn-nao">Não</button>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FECHO
+════════════════════════════════════════════════════════ -->
+<section class="fecho">
+  <h2>
+    Você é a <span>luz da minha vida,</span><br>
+    a mulher que Deus<br>
+    escolheu pra mim.
+  </h2>
+  <span class="fecho-anel">♡ ♡ ♡</span>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.3rem);color:rgba(255,255,255,.5);margin-top:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7">
+    Prometo te amar, te cuidar e te proteger todos os dias — diante de Deus e do mundo.
+  </p>
+  <span class="fecho-anel" style="font-size:.9rem;letter-spacing:.15em;opacity:.35;margin-top:1.5rem">namoro · 01/03/2019 &nbsp;·&nbsp; noivado · 15/02/2025 &nbsp;·&nbsp; para sempre</span>
+  <p class="fecho-data" style="margin-top:2rem">12 de Junho · Dia dos Namorados · 2026</p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     OVERLAY DE CELEBRAÇÃO
+════════════════════════════════════════════════════════ -->
+<div class="celebracao" id="celebracao">
+  <span class="celebracao-coracao">💍</span>
+  <h2>Sabia que você<br>ia dizer <span>sim…</span></h2>
+  <p>
+    Você é tudo que eu pedi a Deus, tudo que eu não sabia que merecia,<br>
+    e tudo que eu quero ao meu lado para sempre.<br>
+    Te amo, minha princesa. ♡
+  </p>
+  <button class="celebracao-fechar" id="celebracao-fechar">continuar vendo a página</button>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+     RODAPÉ
+════════════════════════════════════════════════════════ -->
+<footer class="rodape">
+  Feito com amor &nbsp;·&nbsp; Barretech
+</footer>
+
+<!-- Player flutuante -->
+<audio id="audio" loop>
+  <source src="../public/princesinha-mandona.mpeg" type="audio/mpeg">
+</audio>
+
+<div class="player">
+  <div class="player-info" id="player-info">
+    <span class="player-titulo">Princesinha Mandona</span>
+    <span class="player-artista">Zé Neto & Cristiano</span>
+  </div>
+  <button class="player-btn" id="player-btn" title="Tocar música">
+    <!-- play -->
+    <svg class="ico-play" width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <!-- pause -->
+    <svg class="ico-pause" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+  </button>
+</div>
+
+<script>
+  const btnNao    = document.getElementById('btn-nao');
+  const btnSim    = document.getElementById('btn-sim');
+  const overlay   = document.getElementById('celebracao');
+  const fechar    = document.getElementById('celebracao-fechar');
+
+  // Botão "Não" foge do cursor
+  function fugir(e) {
+    e.preventDefault();
+    const margem  = 120;
+    const maxX    = window.innerWidth  - margem;
+    const maxY    = window.innerHeight - margem;
+    const x       = Math.floor(Math.random() * maxX);
+    const y       = Math.floor(Math.random() * maxY);
+    btnNao.style.position  = 'fixed';
+    btnNao.style.left      = x + 'px';
+    btnNao.style.top       = y + 'px';
+    btnNao.style.zIndex    = '9999';
+    btnNao.style.transition= 'left .25s ease, top .25s ease';
+  }
+
+  btnNao.addEventListener('mouseenter', fugir);
+  btnNao.addEventListener('touchstart', fugir, { passive: false });
+
+  // Chuva de corações
+  function criarPetalas() {
+    const simbolos = ['♡', '♡', '♡', '✨', '🌸', '💕', '✦'];
+    for (let i = 0; i < 70; i++) {
+      setTimeout(() => {
+        const p            = document.createElement('span');
+        p.className        = 'petala';
+        p.textContent      = simbolos[Math.floor(Math.random() * simbolos.length)];
+        p.style.left       = (Math.random() * 100) + 'vw';
+        p.style.fontSize   = (Math.random() * 1.4 + 0.7) + 'rem';
+        p.style.animationDuration  = (Math.random() * 3 + 2.5) + 's';
+        p.style.animationDelay     = (Math.random() * 1.5) + 's';
+        p.style.color      = `hsl(${Math.floor(Math.random()*30 + 330)}, 80%, ${Math.floor(Math.random()*20+60)}%)`;
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 6000);
+      }, i * 40);
+    }
+  }
+
+  // Clique no Sim
+  btnSim.addEventListener('click', () => {
+    criarPetalas();
+    overlay.classList.add('ativo');
+  });
+
+  // Fechar overlay
+  fechar.addEventListener('click', () => {
+    overlay.classList.remove('ativo');
+    btnNao.style.display = 'none';
+    btnSim.textContent   = '♡ ela disse sim ♡';
+    btnSim.disabled      = true;
+    btnSim.style.opacity = '.6';
+    btnSim.style.cursor  = 'default';
+  });
+
+  // ── CONTADOR AO VIVO ──────────────────────────────────
+  const INICIO = new Date(2019, 2, 1); // 01/03/2019
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function atualizarContador() {
+    const agora = new Date();
+    let anos  = agora.getFullYear() - INICIO.getFullYear();
+    let meses = agora.getMonth()    - INICIO.getMonth();
+    let dias  = agora.getDate()     - INICIO.getDate();
+
+    if (dias  < 0) { meses--; const ultDia = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate(); dias += ultDia; }
+    if (meses < 0) { anos--;  meses += 12; }
+
+    const horas = agora.getHours();
+    const min   = agora.getMinutes();
+    const seg   = agora.getSeconds();
+
+    document.getElementById('cnt-anos').textContent  = anos;
+    document.getElementById('cnt-meses').textContent = meses;
+    document.getElementById('cnt-dias').textContent  = dias;
+    document.getElementById('cnt-horas').textContent = pad(horas);
+    document.getElementById('cnt-min').textContent   = pad(min);
+    document.getElementById('cnt-seg').textContent   = pad(seg);
+  }
+
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
+
+  // ── PLAYER DE MÚSICA ──────────────────────────────────
+  const audio      = document.getElementById('audio');
+  const playerBtn  = document.getElementById('player-btn');
+  const playerInfo = document.getElementById('player-info');
+
+  playerBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playerBtn.classList.add('tocando');
+      playerInfo.classList.add('visivel');
+    } else {
+      audio.pause();
+      playerBtn.classList.remove('tocando');
+      playerInfo.classList.remove('visivel');
+    }
+  });
+
+  // Mostra o nome da música por 3s ao carregar
+  window.addEventListener('load', () => {
+    playerInfo.classList.add('visivel');
+    setTimeout(() => {
+      if (audio.paused) playerInfo.classList.remove('visivel');
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>

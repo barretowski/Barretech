@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feliz Dia dos Namorados</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --rosa:      #e8a0b0;
+    --rosa-esc:  #c4617a;
+    --vinho:     #6b1a2e;
+    --creme:     #fdf6f0;
+    --branco:    #ffffff;
+    --texto:     #3a1a22;
+    --sub:       #9a6070;
+    --ouro:      #c9963e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--vinho) 0%, #3a0a18 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(196,97,122,.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 35% at 80% 20%, rgba(201,150,62,.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-ornamento {
+    font-size: 2rem;
+    color: var(--rosa);
+    margin-bottom: 1.5rem;
+    letter-spacing: .6rem;
+    opacity: .7;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.1;
+    letter-spacing: .02em;
+  }
+
+  .hero h1 span {
+    color: var(--rosa);
+    display: block;
+  }
+
+  .hero-linha {
+    width: 60px;
+    height: 2px;
+    background: var(--ouro);
+    margin: 2rem auto;
+    border-radius: 2px;
+  }
+
+  .hero-sub {
+    font-size: clamp(.9rem, 2.5vw, 1.1rem);
+    color: rgba(255,255,255,.6);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .hero-data {
+    margin-top: 3.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem;
+    color: rgba(255,255,255,.3);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll svg {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* ── SEÇÃO GENÉRICA ───────────────────────────────────── */
+  .secao {
+    padding: 6rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .secao-titulo {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .secao-titulo .tag {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: var(--rosa-esc);
+    display: block;
+    margin-bottom: .8rem;
+  }
+
+  .secao-titulo h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--vinho);
+    line-height: 1.15;
+  }
+
+  .secao-titulo .ornamento {
+    width: 40px;
+    height: 2px;
+    background: var(--rosa);
+    margin: 1.2rem auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── MENSAGEM PRINCIPAL ───────────────────────────────── */
+  .mensagem {
+    background: var(--vinho);
+    padding: 6rem 2rem;
+  }
+
+  .mensagem-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mensagem-inner .aspas {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    color: var(--rosa);
+    line-height: .5;
+    opacity: .4;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .mensagem-inner p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--branco);
+    line-height: 1.7;
+    /* PLACEHOLDER: substitua pelo texto da mensagem */
+  }
+
+  .mensagem-inner .assinatura {
+    margin-top: 2rem;
+    font-size: .85rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    opacity: .7;
+    /* PLACEHOLDER: substitua pelo nome */
+  }
+
+  /* ── FOTO DESTAQUE (primeiro momento) ────────────────── */
+  .foto-destaque {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 600px;
+  }
+
+  .foto-destaque img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .foto-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 2rem 1.8rem;
+    background: linear-gradient(to top, rgba(30,5,15,.88) 0%, transparent 100%);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    letter-spacing: .01em;
+  }
+
+  /* ── MOMENTOS (foto + declaração) ────────────────────── */
+  .momentos {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 6rem;
+  }
+
+  .momento {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .momento.inv { flex-direction: row-reverse; }
+
+  .momento-foto {
+    flex: 0 0 55%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 400px;
+    background: linear-gradient(135deg, #f0dde4, #e0c0cc);
+  }
+
+  .momento-foto img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+  }
+
+  .momento:hover .momento-foto img { transform: scale(1.03); }
+
+  .momento-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .momento-num {
+    font-size: .7rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--rosa-esc);
+  }
+
+  .momento-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--vinho);
+    line-height: 1.45;
+  }
+
+  .momento-ornamento {
+    width: 30px;
+    height: 2px;
+    background: var(--rosa);
+    border-radius: 2px;
+    margin-top: .5rem;
+  }
+
+  /* placeholder enquanto não há foto */
+  .foto-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    color: var(--rosa-esc);
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .5;
+  }
+
+  .foto-placeholder svg { opacity: .5; }
+
+  /* ── SEÇÃO DE VÍDEOS ──────────────────────────────────── */
+  .videos-bg {
+    background: #f7ecf0;
+    padding: 6rem 2rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .video-item {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e0c8d0;
+    position: relative;
+    aspect-ratio: 9 / 16;
+    max-height: 520px;
+  }
+
+  .video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    background: linear-gradient(160deg, #e8c8d3 0%, #d4a8bb 100%);
+    color: var(--vinho);
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .6;
+  }
+
+  .video-placeholder svg { opacity: .5; }
+
+  /* ── FRASE FINAL ──────────────────────────────────────── */
+  .fecho {
+    background: linear-gradient(160deg, var(--vinho) 0%, #3a0a18 100%);
+    padding: 8rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fecho::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(196,97,122,.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .fecho h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--branco);
+    line-height: 1.2;
+    /* PLACEHOLDER: substitua pelo texto de fechamento */
+  }
+
+  .fecho h2 span { color: var(--rosa); }
+
+  .fecho-ornamento {
+    font-size: 1.6rem;
+    letter-spacing: .4rem;
+    color: var(--rosa);
+    opacity: .5;
+    margin-top: 2rem;
+    display: block;
+  }
+
+  .fecho-data {
+    margin-top: 3rem;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+  }
+
+  /* ── RODAPÉ ───────────────────────────────────────────── */
+  .rodape {
+    background: #1a050e;
+    padding: 2rem;
+    text-align: center;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.2);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVO ───────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .momento, .momento.inv {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .momento-foto {
+      flex: unset;
+      width: 100%;
+    }
+
+    .momentos { gap: 4rem; margin-top: 4rem; }
+
+    .foto-destaque img { height: 320px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO — CAPA
+════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-ornamento">♥ ♥ ♥</div>
+
+  <h1>
+    <!-- PLACEHOLDER: substitua pelo nome principal -->
+    Monique
+    <span>& Rodrigo</span>
+  </h1>
+
+  <div class="hero-linha"></div>
+
+  <p class="hero-sub">
+    <!-- PLACEHOLDER: subtítulo curto -->
+    Uma história de amor
+  </p>
+
+  <p class="hero-data">12 de Junho · Dia dos Namorados · 2026</p>
+
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    rolar
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     MENSAGEM PRINCIPAL
+════════════════════════════════════════════════════════ -->
+<section class="mensagem">
+  <div class="mensagem-inner">
+    <span class="aspas">"</span>
+    <p>
+      <!-- PLACEHOLDER: insira aqui a mensagem/texto principal -->
+      Aqui vai uma mensagem especial de amor e carinho...
+    </p>
+    <span class="assinatura">
+      <!-- PLACEHOLDER: assinatura -->
+      — com amor
+    </span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     GALERIA — HISTÓRIA EM SCROLL
+════════════════════════════════════════════════════════ -->
+<section class="secao">
+  <div class="secao-titulo">
+    <span class="tag">Nossa história em fotos</span>
+    <h2>Momentos que ficam</h2>
+    <div class="ornamento"></div>
+  </div>
+
+  <!-- FOTO 1 — destaque full -->
+  <div class="foto-destaque">
+    <img src="../public/img/monique/foto-01.jpeg" alt="nossa primeira foto juntos">
+    <div class="foto-legenda">
+      nossa primeira foto juntos, e eu tenho certeza q nem vc lembrava… <em>"oq vc bebe? pode ser uma heineken?"</em>
+    </div>
+  </div>
+
+  <!-- MOMENTOS 2 a 11 -->
+  <div class="momentos">
+
+    <!-- MOMENTO 2 -->
+    <div class="momento">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-02.jpeg" alt="momento 2">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">02</span>
+        <p class="momento-frase">tinha tanta coisa errada naquele dia, mas do seu lado nada parecia fora do lugar.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 3 -->
+    <div class="momento inv">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-03.jpeg" alt="momento 3">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">03</span>
+        <p class="momento-frase">eu não sei explicar o que é isso que sinto. só sei que não quero parar de sentir.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 4 -->
+    <div class="momento">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-04.jpeg" alt="momento 4">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">04</span>
+        <p class="momento-frase">você fica bonita de um jeito que não tem como ignorar. e eu percebi isso antes de te falar.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 5 -->
+    <div class="momento inv">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-05.jpeg" alt="momento 5">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">05</span>
+        <p class="momento-frase">cada dia do meu lado você prova que eu acertei em ficar.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 6 -->
+    <div class="momento">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-06.jpeg" alt="momento 6">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">06</span>
+        <p class="momento-frase">tem coisas que a gente não precisa dizer em voz alta. a gente só sente. e é isso.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 7 -->
+    <div class="momento inv">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-07.jpeg" alt="momento 7">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">07</span>
+        <p class="momento-frase">eu quero ser o motivo do seu sorriso, todos os dias, sem exceção.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 8 -->
+    <div class="momento">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-08.jpeg" alt="momento 8">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">08</span>
+        <p class="momento-frase">do jeito que eu olho pra você, todo mundo já sabe o que eu sinto.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 9 -->
+    <div class="momento inv">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-09.jpeg" alt="momento 9">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">09</span>
+        <p class="momento-frase">não existe rotina chata quando você está no meio dela.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 10 -->
+    <div class="momento">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-10.jpeg" alt="momento 10">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">10</span>
+        <p class="momento-frase">feliz em saber que o meu lugar favorito tem o seu cheiro.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+    <!-- MOMENTO 11 -->
+    <div class="momento inv">
+      <div class="momento-foto">
+        <img src="../public/img/monique/foto-11.jpeg" alt="momento 11">
+      </div>
+      <div class="momento-texto">
+        <span class="momento-num">11</span>
+        <p class="momento-frase">um ano inteiro, e eu ainda fico nervoso quando você chega perto.</p>
+        <div class="momento-ornamento"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FECHO / ENCERRAMENTO
+════════════════════════════════════════════════════════ -->
+<section class="fecho">
+  <h2>
+    <!-- PLACEHOLDER: frase de encerramento -->
+    Feliz Dia<br>dos <span>Namorados</span>
+  </h2>
+  <span class="fecho-ornamento">♥</span>
+  <p class="fecho-data">12 de Junho · 2025</p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     RODAPÉ
+════════════════════════════════════════════════════════ -->
+<footer class="rodape">
+  Feito com amor &nbsp;·&nbsp; Barretech
+</footer>
+
+</body>
+</html>
