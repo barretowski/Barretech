@@ -1043,22 +1043,6 @@
     mBtnSim.style.cursor   = 'default';
   });
 
-  /* ── PLAYER ─────────────────────────────────────────── */
-  const audio      = document.getElementById('audio');
-  const playerBtn  = document.getElementById('playerBtn');
-  const playerInfo = document.getElementById('playerInfo');
-
-  setTimeout(() => playerInfo.classList.add('visivel'), 1200);
-
-  playerBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playerBtn.classList.add('tocando');
-    } else {
-      audio.pause();
-      playerBtn.classList.remove('tocando');
-    }
-  });
 </script>
 
 <audio id="audio" loop>
@@ -1075,6 +1059,24 @@
     <svg class="ico-pause" width="22" height="22" viewBox="0 0 24 24" fill="white"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
   </button>
 </div>
+
+<script>
+  const audio      = document.getElementById('audio');
+  const playerBtn  = document.getElementById('playerBtn');
+  const playerInfo = document.getElementById('playerInfo');
+
+  setTimeout(() => playerInfo.classList.add('visivel'), 1200);
+
+  playerBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playerBtn.classList.add('tocando');
+    } else {
+      audio.pause();
+      playerBtn.classList.remove('tocando');
+    }
+  });
+</script>
 
 </body>
 </html>
