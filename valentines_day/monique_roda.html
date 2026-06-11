@@ -188,12 +188,39 @@
 
   .mensagem-inner p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
     font-style: italic;
     font-weight: 300;
     color: var(--branco);
-    line-height: 1.7;
-    /* PLACEHOLDER: substitua pelo texto da mensagem */
+    line-height: 1.85;
+    margin-bottom: 1.6rem;
+    text-align: left;
+  }
+
+  .mensagem-inner p:last-of-type { margin-bottom: 0; }
+
+  .mensagem-destaque {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rosa);
+    text-align: center;
+    line-height: 1.4;
+    margin: 2.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(232,160,176,.2);
+    border-bottom: 1px solid rgba(232,160,176,.2);
+  }
+
+  .mensagem-destaque small {
+    display: block;
+    font-size: .6em;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+    margin-top: .6rem;
+    font-style: normal;
   }
 
   .mensagem-inner .assinatura {
@@ -443,6 +470,97 @@
 
     .foto-destaque img { height: 320px; }
   }
+
+  /* ── CONTADOR ─────────────────────────────────────────── */
+  .contador {
+    background: linear-gradient(160deg, #3a0a18 0%, var(--vinho) 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .contador-label {
+    font-size: .7rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    opacity: .7;
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .contador-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: .5rem 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contador-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+  }
+
+  .contador-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300;
+    color: var(--branco);
+    line-height: 1;
+    min-width: 2ch;
+    display: block;
+  }
+
+  .contador-unidade {
+    font-size: .6rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+  }
+
+  .contador-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--rosa);
+    opacity: .3;
+    line-height: 1;
+    padding-bottom: .6rem;
+    align-self: flex-end;
+  }
+
+  .contador-sub {
+    margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.95rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,.35);
+  }
+
+  .contador-sub span { color: var(--rosa); opacity: .8; }
+
+  @keyframes pulsar-m {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.18); }
+  }
+
+  .petala-m {
+    position: fixed;
+    top: -2rem;
+    pointer-events: none;
+    z-index: 9999;
+    animation: cair-m linear forwards;
+    user-select: none;
+  }
+
+  @keyframes cair-m {
+    0%   { transform: translateY(0) rotate(0deg);   opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateY(105vh) rotate(400deg); opacity: 0; }
+  }
 </style>
 </head>
 <body>
@@ -476,19 +594,76 @@
 
 
 <!-- ════════════════════════════════════════════════════════
+     CONTADOR AO VIVO
+════════════════════════════════════════════════════════ -->
+<section class="contador">
+  <span class="contador-label">juntos há</span>
+  <div class="contador-grid">
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-anos">0</span>
+      <span class="contador-unidade">anos</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-meses">0</span>
+      <span class="contador-unidade">meses</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-dias">0</span>
+      <span class="contador-unidade">dias</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-horas">00</span>
+      <span class="contador-unidade">horas</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-min">00</span>
+      <span class="contador-unidade">minutos</span>
+    </div>
+    <span class="contador-sep">·</span>
+    <div class="contador-item">
+      <span class="contador-num" id="cnt-seg">00</span>
+      <span class="contador-unidade">segundos</span>
+    </div>
+  </div>
+  <p class="contador-sub">desde <span>05 de setembro de 2025</span> — e contando.</p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
      MENSAGEM PRINCIPAL
 ════════════════════════════════════════════════════════ -->
 <section class="mensagem">
   <div class="mensagem-inner">
     <span class="aspas">"</span>
-    <p>
-      <!-- PLACEHOLDER: insira aqui a mensagem/texto principal -->
-      Aqui vai uma mensagem especial de amor e carinho...
-    </p>
-    <span class="assinatura">
-      <!-- PLACEHOLDER: assinatura -->
-      — com amor
-    </span>
+
+    <p>No dia 2 para o dia 3 de agosto eu conheci o meu grande amor. Eu pedia demais para Deus, mas ele não realizava e eu não entendia por que dava tão errado sendo que eu pedia a ele… mas é aquela famosa frase: <em>"no tempo de Deus"</em>. Demorou, mas chegou — e foi bem mais do que eu mesma pedi.</p>
+
+    <p>Queria começar dizendo o quanto eu sou sortuda. Eu sou sortuda pelo simples fato de ter vc em minha vida!</p>
+
+    <p>Iago, vc é o meu verdadeiro significado de Lar. Eu já sabia disso, mas tive a certeza semana passada na igreja — e eu tenho certeza que vc sabe o porquê! Mesmo eu vendo meus pais, eu não parava de olhar para trás esperando te encontrar, a ansiedade estava a mil, eu não parava quieta nem por um minuto… e quando eu menos esperava, olhei por um segundo para trás e o meu olhar se encontrou no seu. Ali, parecia que tudo tinha parado. Meu coração disparou, meu sorriso saiu sem nenhum esforço — e quando vc cochichou <em>"te amo"</em>, um sentimento totalmente inexplicável.</p>
+
+    <p>Mas quando eu saí e fiquei te caçando e finalmente te abracei… aquilo ali é melhor que uma pizza de 4 queijos acompanhada de vinho. O seu abraço, os olhos lacrimejando, o sorriso mais lindo que eu já vi em toda a minha vida… isso é lar. A sensação de estar em paz. A sensação de um amor verdadeiro.</p>
+
+    <div class="mensagem-destaque">
+      "lindinho, fofinho"
+      <small>o apelido que nunca vamos esquecer</small>
+    </div>
+
+    <p>Sempre falam que tem um "porque"… vc fez eu aprender com os meus erros, ter a vontade de mudar por mim mesma — digo por mim mesma pelo fato de que eu sei que vc é o melhor para mim. E esse é um dos meus porquês.</p>
+
+    <p>Iago, o seu cheiro, a sua pele, seu olhar, seu sorriso, sua voz, vc por completo — estou escrevendo e estou sentindo saudades. Eu te amo de uma maneira totalmente inexplicável. Eu te amo e vou repetir isso diversas vezes, porque a melhor escolha na minha vida foi vc. Sem sombra de dúvidas.</p>
+
+    <p>Eu te amo, e todos os dias eu te amo um pouco mais. Não vejo a hora da gente se casar e poder viver tudo — nossa casa, nossos filhos, viagens e etc. Primeiro dia dos namorados juntos. Primeiro de muitos.</p>
+
+    <p>Quero vc como o pai dos meus filhos, meu futuro esposo e marido. Quero passar o resto da minha vida com vc. Vc é a minha escolha e o meu amor — meu preto, meu gostoso, tudo. Eu quero vc para ficar até a eternidade comigo, seja na saúde ou na doença, na alegria ou na tristeza. Eu sei que é vc, e sempre vai ser vc. Que o nosso futuro seja simplesmente maravilhoso, e que sempre nós nos tenhamos.</p>
+
+    <p><strong style="font-style:normal;letter-spacing:.05em">Eu te amo, Iago Silva.</strong></p>
+
+    <span class="assinatura">— Monique</span>
   </div>
 </section>
 
@@ -638,6 +813,53 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════
+     BRINCADEIRA — PEDIDO DE NAMORO
+════════════════════════════════════════════════════════ -->
+<section style="background:linear-gradient(160deg,#3a0a18 0%,var(--vinho) 100%);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden">
+
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(196,97,122,.1) 0%,transparent 70%);pointer-events:none"></div>
+
+  <span style="font-size:2rem;display:block;margin-bottom:1.8rem;animation:pulsar-m 2s ease-in-out infinite">🥺</span>
+
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.6rem);font-weight:300;font-style:italic;color:#fff;line-height:1.45;max-width:600px;margin:0 auto 0.6rem">
+    Iago… você aceita ser<br>meu namorado oficial?
+  </h2>
+
+  <p style="font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:3rem">pensa bem. o botão não vai te esperar.</p>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap">
+    <button id="m-btn-sim" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;background:var(--rosa-esc);color:#fff;border:none;padding:.95rem 2.6rem;border-radius:50px;cursor:pointer;letter-spacing:.05em;box-shadow:0 4px 24px rgba(196,97,122,.35);transition:transform .2s,box-shadow .2s">
+      claro que sim 🩷
+    </button>
+    <button id="m-btn-nao" style="font-size:.8rem;background:transparent;color:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.12);padding:.55rem 1.3rem;border-radius:50px;cursor:pointer;letter-spacing:.1em;position:relative;transition:opacity .2s">
+      deixa eu pensar
+    </button>
+  </div>
+
+</section>
+
+<!-- overlay de celebração -->
+<div id="m-celebracao" style="position:fixed;inset:0;background:rgba(20,3,10,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:9998;opacity:0;pointer-events:none;transition:opacity .5s ease">
+
+  <span style="font-size:3rem;display:block;margin-bottom:1.5rem;animation:pulsar-m 1.4s ease-in-out infinite">🎉</span>
+
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:300;font-style:italic;color:#fff;line-height:1.3;margin-bottom:1.2rem">
+    era isso que eu queria<br>ouvir!! 🥳
+  </h2>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.4rem);color:rgba(255,255,255,.6);max-width:480px;line-height:1.7;margin-bottom:2.5rem">
+    agora é oficial, meu "lindinho, fofinho" 🩷<br>
+    primeiro dia dos namorados — primeiro de muitos.
+  </p>
+
+  <button id="m-fechar" style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);background:transparent;border:1px solid rgba(255,255,255,.12);padding:.55rem 1.5rem;border-radius:50px;cursor:pointer;transition:color .2s,border-color .2s">
+    continuar vendo
+  </button>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
      FECHO / ENCERRAMENTO
 ════════════════════════════════════════════════════════ -->
 <section class="fecho">
@@ -656,6 +878,99 @@
 <footer class="rodape">
   Feito com amor &nbsp;·&nbsp; Barretech
 </footer>
+
+<script>
+  const INICIO = new Date(2025, 8, 5); // 05/09/2025
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function atualizarContador() {
+    const agora = new Date();
+    let anos  = agora.getFullYear() - INICIO.getFullYear();
+    let meses = agora.getMonth()    - INICIO.getMonth();
+    let dias  = agora.getDate()     - INICIO.getDate();
+
+    if (dias  < 0) { meses--; const ultDia = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate(); dias += ultDia; }
+    if (meses < 0) { anos--;  meses += 12; }
+
+    document.getElementById('cnt-anos').textContent  = anos;
+    document.getElementById('cnt-meses').textContent = meses;
+    document.getElementById('cnt-dias').textContent  = dias;
+    document.getElementById('cnt-horas').textContent = pad(agora.getHours());
+    document.getElementById('cnt-min').textContent   = pad(agora.getMinutes());
+    document.getElementById('cnt-seg').textContent   = pad(agora.getSeconds());
+  }
+
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
+
+  // ── BRINCADEIRA ───────────────────────────────────────
+  const mBtnNao   = document.getElementById('m-btn-nao');
+  const mBtnSim   = document.getElementById('m-btn-sim');
+  const mOverlay  = document.getElementById('m-celebracao');
+  const mFechar   = document.getElementById('m-fechar');
+
+  let tentativas = 0;
+
+  const frasesNao = [
+    'sério??',
+    'tem certeza?? 🤨',
+    'para de zoar…',
+    'tá com medo né 😏',
+    'última chance!',
+    'vou fingir que não vi isso'
+  ];
+
+  function fugirNao(e) {
+    e.preventDefault();
+    const margem = 130;
+    const x = Math.floor(Math.random() * (window.innerWidth  - margem));
+    const y = Math.floor(Math.random() * (window.innerHeight - margem));
+    mBtnNao.style.position   = 'fixed';
+    mBtnNao.style.left       = x + 'px';
+    mBtnNao.style.top        = y + 'px';
+    mBtnNao.style.zIndex     = '9999';
+    mBtnNao.style.transition = 'left .2s ease, top .2s ease';
+    mBtnNao.textContent      = frasesNao[Math.min(tentativas, frasesNao.length - 1)];
+    tentativas++;
+  }
+
+  mBtnNao.addEventListener('mouseenter', fugirNao);
+  mBtnNao.addEventListener('touchstart', fugirNao, { passive: false });
+
+  function confetes() {
+    const simbolos = ['🩷', '✨', '🎉', '♡', '🌸', '💕', '⭐'];
+    for (let i = 0; i < 65; i++) {
+      setTimeout(() => {
+        const p = document.createElement('span');
+        p.className = 'petala-m';
+        p.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+        p.style.left = (Math.random() * 100) + 'vw';
+        p.style.fontSize = (Math.random() * 1.4 + 0.8) + 'rem';
+        p.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+        p.style.animationDelay    = (Math.random() * 1.2) + 's';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5500);
+      }, i * 45);
+    }
+  }
+
+  mBtnSim.addEventListener('click', () => {
+    confetes();
+    mOverlay.style.opacity = '1';
+    mOverlay.style.pointerEvents = 'all';
+  });
+
+  mFechar.addEventListener('click', () => {
+    mOverlay.style.opacity = '0';
+    mOverlay.style.pointerEvents = 'none';
+    mBtnNao.style.display  = 'none';
+    mBtnSim.textContent    = '🩷 ele disse sim 🩷';
+    mBtnSim.disabled       = true;
+    mBtnSim.style.opacity  = '.6';
+    mBtnSim.style.cursor   = 'default';
+  });
+</script>
 
 </body>
 </html>
